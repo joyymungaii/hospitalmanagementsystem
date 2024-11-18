@@ -1,0 +1,25 @@
+h2{
+    color: darkseagreen;
+    font-size: 50px;
+    margin-left: 5cm;
+    
+    
+ }
+ h1{
+    margin-left: 5cm;
+ }
+body{
+   margin-left: 5cm;
+   background-image: url(/images/car2.jpg);
+   background-size: cover;
+}
+ul li{
+   list-style: none;
+   display: inline;
+   color: inherit;
+   text-decoration: none;
+}
+ul li a{
+   color: white;
+   text-decoration: none;
+}

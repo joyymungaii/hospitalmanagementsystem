@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Appointment Form</title>
+</head>
+<body>
+
+<form method="POST" id="form">
+    <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE">
+    <input type="text" name="name" placeholder="Your Name" required>
+    <input type="email" name="email" placeholder="Your Email" required>
+    <textarea name="message" placeholder="Your Message" required></textarea>
+    <button type="submit">Submit Form</button>
+    <div id="result"></div>
+</form>
+
+<script>
+const form = document.getElementById('form');
+const result = document.getElementById('result');
+
+form.addEventListener('submit', function(e) {
+    e.preventDefault(); // Prevent the default form submission
+
+    const formData = new FormData(form);
+    const object = Object.fromEntries(formData);
+    const json = JSON.stringify(object);
+
+    result.innerHTML = "Please wait...";
+
+    // Send data to your API
+    fetch('https://api.web3forms.com/submit', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            },
+            body: json
+        })
+        .then(async (response) => {
+            let jsonResponse = await response.json();
+            if (response.status == 200) {
+                result.innerHTML = jsonResponse.message; // Display success message
+            } else {
+                console.log(response);
+                result.innerHTML = jsonResponse.message; // Display error message
+            }
+        })
+        .catch(error => {
+            console.log(error);
+            result.innerHTML = "Something went wrong!"; // Handle errors
+        })
+        .finally(function() {
+            form.reset(); // Reset the form
+            setTimeout(() => {
+                result.style.display = "none"; // Hide result after a delay
+            }, 3000);
+        });
+});
+</script>
+
+</body>
+</html>

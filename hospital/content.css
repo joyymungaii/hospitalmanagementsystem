@@ -1,0 +1,297 @@
+
+*{
+margin: 0;
+padding: 0;
+font-family: "poppins", sans-serif;
+}
+
+body{
+background-color: #000;
+display: flex;
+justify-content: center;
+align-items: center;
+min-height: 100vh;
+background: url("/images/background3.jpg") no-repeat;
+background-position: center;
+background-size: cover;
+width: 100%;
+}
+
+.box{
+width: max-content;
+padding: 15px 30px;
+height: 530px;
+border: 2px solid hwb(143 15% 69%);
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+border-radius: 20px;
+backdrop-filter: blur(15px);
+background: transparent;
+}
+
+h2{
+font-size: 2em;
+color: #faf5e3;
+text-align: center;
+}
+
+.inputbox{
+position: relative;
+margin: 30px 0;
+width: 300px;
+border-bottom: 2px solid #faf5e3;
+}
+
+.inputbox label{
+position: absolute;
+top: 50%;
+left: 40px;
+transform: translate(-50%);
+color: #faf5e3;
+font-size: 1em;
+pointer-events: none;
+transition: 0.5s;
+}
+
+input:focus~label{
+top: -5px;
+}
+
+.inputbox input{
+width: 100%;
+height: 45px;
+background: transparent;
+border: none;
+outline: none;
+font-size: 1.5em;
+padding: 0 35px 0 5px;
+color: #fff;
+}
+
+.inputbox ion-icon{
+position: absolute;
+right: 8px;
+color: #faf5e3;
+font-size: 1.2em;
+top: 20px;
+}
+
+button{
+width: 100%;
+height: 40px;
+background-color: #faf5e3;
+border-radius: 50px;
+border: none;
+outline: none;
+cursor: pointer;
+font-size: 1.3em;
+font-weight: 700;
+}
+
+.forget{
+display: flex;
+justify-content: space-between;
+margin: 10px 0 15px;
+font-size: 0.9em;
+color: #fff;
+}
+
+.forget label:nth-child(2){
+order: 1;
+}
+
+.forget label{
+display: flex;
+align-items: center;
+}
+
+.forget label input[ type="checkbox"]{
+margin-right: 6px;
+}
+
+.forget label a{
+color: #fff;
+text-decoration: none;
+}
+
+.forget  label a:hover{
+text-decoration: underline;
+}
+
+.register{
+font-size: 0.9em;
+color: #fff;
+text-align: center;
+margin: 20px 0 15px;
+}
+
+.register p a{
+text-decoration: none;
+color: #fff;
+font-weight: 800;
+}
+
+.register p a:hover{
+text-decoration: underline;
+transition: 1s;
+}
+
+
+/*LINKS BS*/
+
+.links{
+   display:flex;
+   justify-content:space-around;
+   padding:0 4rem;
+   margin-top:0.9rem;
+   font-weight:bold;
+}
+.links p{
+   color: #fff;
+}
+
+#signUpButton, #signInButton{
+   color:rgb(125,125,235);
+   border:none;
+   background-color:transparent;
+   font-size:1rem;
+   font-weight:bold;
+}
+#signUpButton:hover, #signInButton:hover {
+   text-decoration:underline;
+   color:blue;
+} 
+
+
+/* login*/
+.container{
+    width: max-content;
+    padding: 0 30px;
+    height: 400px;
+    border: 2px solid hwb(143 15% 69%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    backdrop-filter: blur(15px);
+    background: transparent;
+}
+
+h2{
+    font-size: 2em;
+    color: #faf5e3;
+    text-align: center;
+}
+
+.inputbox{
+    position: relative;
+    margin: 30px 0;
+    width: 300px;
+    border-bottom: 2px solid #faf5e3;
+}
+
+.inputbox label{
+    position: absolute;
+    top: 50%;
+    left: 40px;
+    transform: translate(-50%);
+    color: #faf5e3;
+    font-size: 1em;
+    pointer-events: none;
+    transition: 0.5s;
+}
+
+input:focus~label{
+    top: -5px;
+}
+
+.inputbox input{
+    width: 100%;
+    height: 50px;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-size: 1em;
+    padding: 0 35px 0 5px;
+    color: #000;
+}
+
+.inputbox ion-icon{
+    position: absolute;
+    right: 8px;
+    color: #faf5e3;
+    font-size: 1.2em;
+    top: 20px;
+}
+
+button{
+    width: 100%;
+    height: 40px;
+    background-color: #faf5e3;
+    border-radius: 40px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-size: 1.3em;
+    font-weight: 700;
+}
+
+.forget{
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 0 15px;
+    font-size: 0.9em;
+    color: #fff;
+}
+
+.forget label:nth-child(2){
+    order: 1;
+}
+
+.forget label{
+    display: flex;
+    align-items: center;
+}
+
+.forget label input[ type="checkbox"]{
+    margin-right: 6px;
+}
+
+.forget label a{
+    color: #fff;
+    text-decoration: none;
+}
+
+.forget  label a:hover{
+    text-decoration: underline;
+}
+
+.register{
+   display: flex;
+    color: #fff;
+    text-align: center;
+    margin: 20px 0 15px;
+}
+
+.register p {
+    text-decoration: none;
+    font-weight: 800;
+}
+.register button{
+   text-decoration: none;
+   font-size: 16px;
+   font-weight: 800; 
+}
+
+.messageDiv{
+   background-color:hsl(327,90%,28%);
+   color:white;
+   padding:10px 20px;
+   margin:10px;
+   border-radius: 5px;
+   font-size:1rem;
+   opacity:0;
+   animation:fadeOut 7s forwards;
+}  

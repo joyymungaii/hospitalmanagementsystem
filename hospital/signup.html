@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+
+    <link rel="stylesheet" href="https:cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <script type="module" src="https://cdn.jsdelivr.net/npm/@ionic/core/dist/ionic/ionic.esm.js"></script>
+    <script nomodule src="https://cdn.jsdelivr.net/npm/@ionic/core/dist/ionic/ionic.js"></script>
+
+    <link rel="stylesheet" href="content.css">
+    <script type="module" src="firebaseauth.js"></script>
+
+</head>
+<body>
+    
+    <div class="box" id="signup" style="display: none; color: white;">
+
+        <form action="">
+            <h2>Register</h2>
+            <div id="signUpMessage" class="messageDiv" style="display:none;"></div>
+            <div class="inputbox">
+                
+                <ion-icon name="mail-outline" ></ion-icon>
+                <input  type="text"  id="fName" name="" placeholder="" required>
+                <label for="">First Name</label>
+            </div>
+
+            <div class="inputbox">
+                <ion-icon name="mail-outline" ></ion-icon>
+                <input  type="text"  id="lName" name="" placeholder="" required>
+                <label for="">Last Name</label>
+            </div>
+
+            <div class="inputbox">
+                <ion-icon name="mail-outline" ></ion-icon>
+                <input  type="email"  id="rEmail" name="email" placeholder="">
+                <label for="">Email</label>
+                
+            </div>
+
+            <div class="inputbox">
+                <ion-icon name="lock-closed-outline" ></ion-icon>
+                <input  type="password"  id="rPassword" name="password "  placeholder="" required>
+                <label for="">password</label>
+            </div>
+
+
+            <div class="forget">
+
+                <label for="">
+                    <input type="checkbox"  id="">Remember me
+                </label for="register">
+                    
+                <label for="">
+                    <a href="forgot.html">Forgot Password</a> 
+                </label>
+            </div>
+
+            <button class="btn" id="submitSignUp"> Register </button>
+            
+        </form>
+
+        <div class="links">
+            <p>Already Have Account ?</p>
+            <button id="signInButton">Log In</button>
+          </div>
+
+    </div>
+
+
+    <div class="container" id="signIn">
+
+        <form method="post" action="">
+            <h2>Login</h2>
+            <div id="signInMessage" class="messageDiv" style="display:none;"></div>
+
+            <div class="inputbox">
+                <ion-icon name="mail-outline" ></ion-icon>
+                <input  type="email"  id="email" required>
+                <label for="email">Email:</label>
+            </div>
+
+            <div class="inputbox">
+                <ion-icon name="lock-closed-outline" ></ion-icon>
+                <input  type="password" id="password" required>
+                <label for="password">Password:</label>
+            </div>
+
+            <div class="forget">
+
+                <label for="">
+                    <input type="checkbox"  id="">Remember me
+                </label for="register">
+                    
+                <label for="">
+                    <a href="forgot.html">Forget Password</a> 
+                </label>
+            </div>
+
+            <button class="btn" id="submitSignIn"> Log In </button>
+
+            <div class="register">
+                <p>Don't have an account?</p>
+                <button id="signUpButton"> Register </button>
+            </div>
+        </form>
+
+    </div>
+
+    <script>
+        const signUpButton=document.getElementById('signUpButton');
+        const signInButton=document.getElementById('signInButton');
+        const signInForm=document.getElementById('signIn');
+        const signUpForm=document.getElementById('signup');
+
+        signUpButton.addEventListener('click',function(){
+            signInForm.style.display="none";
+            signUpForm.style.display="block";
+        })
+        signInButton.addEventListener('click', function(){
+            signInForm.style.display="block";
+            signUpForm.style.display="none";
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+      integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
+      crossorigin="anonymous"
+    />
+
+    <title>Hospital</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Open Sans", sans-serif;
+      }
+
+      .one {
+        height: 100vh;
+        width: 100%;
+      }
+
+      /*whole header*/
+      .navbar {
+        display: flex;
+        align-items: center;
+        gap: 180px;
+        width: 100%;
+        height: 80px;
+        background-color: #027179;
+      }
+
+      /*logo*/
+      .logo {
+        padding-left: 20px;
+        color: #000;
+        font-size: 30px;
+        font-weight: bold;
+        letter-spacing: -0.08em;
+      }
+
+      .logo a:hover{
+        color: #000;
+      }
+
+      li {
+        list-style: none;
+      }
+
+      a {
+        text-decoration: none;
+        color: #000;
+      }
+
+      .links {
+        padding-top: 20px;
+        display: flex;
+        gap: 40px;
+        color: #000;
+      }
+
+      .links a:hover {
+        color: #000;
+        text-decoration: underline;
+      }
+
+      .banner {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-image: url(/images/d5.jpg);
+        height: 88vh;
+        background-size: cover;
+        background-position: top;
+        background-repeat: no-repeat;
+      }
+      .home {
+        padding-right: 850px;
+      }
+      .banner h1 {
+        font-size: 50px;
+        font-weight: 700;
+        font-family: Poppins, Helvetica, Arial, sans-serif;
+      }
+      .banner p {
+        padding-top: 10px;
+        padding-bottom: 30px;
+        color: #757575;
+        font-size: 21px;
+        font-family: Poppins, Helvetica, Arial, sans-serif;
+      }
+      .banner button {
+        width: 150px;
+        height: 40px;
+        background-color: #00f2e1;
+        color: #000;
+        font-weight: bold;
+        font-size: 18px;
+        border: none;
+        border-radius: 40px;
+        transition: transform 0.1s;
+      }
+      .banner button:hover {
+        transform: scale(1.1);
+      }
+      .two {
+        height: 45vh;
+        background-color: #006270;
+        width: 100%;
+      }
+      .motto {
+        display: flex;
+        flex-direction: row;
+        gap: 50px;
+        justify-content: center;
+      }
+      .motto i {
+        color: #00b2ad;
+        font-size: 40px;
+        margin-top: 15px;
+        margin-left: 120px;
+        background-color: #009394;
+        border-radius: 50px;
+        width: 60px;
+        height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .tiny_motto {
+        border-radius: 10px;
+        height: 190px;
+        width: 310px;
+        margin-top: 40px;
+        background-color: #fff;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.164),
+          0 6px 20px 0 rgba(0, 0, 0, 0.062);
+        transition: transform 0.1s;
+      }
+      .tiny_motto:hover {
+        transform: scale(1.05);
+      }
+      .tiny_motto h3 {
+        text-align: center;
+        padding-top: 10px;
+        padding-left: 5px;
+      }
+      .tiny_motto p {
+        padding-left: 5px;
+      }
+      .tiny_motto button {
+        margin-top: 10px;
+        margin-left: 75px;
+        background-color: #009394;
+        color: #fff;
+        font-size: 16px;
+        border: none;
+        border-radius: 50px;
+        width: 150px;
+        height: 35px;
+      }
+      .three {
+        height: 160vh;
+        background-color: #00b2ad;
+      }
+      .three h2 {
+        font-size: 50px;
+        text-align: center;
+        padding-top: 30px;
+      }
+      .services {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .service {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 300px;
+        width: 300px;
+        margin: 50px 0 0 30px;
+        background-color: #fff;
+        border-radius: 20px;
+        transition: transform 500ms;
+      }
+      .service:hover {
+        transform: scale(1.1);
+      }
+      .service i {
+        font-size: 40px;
+        padding-bottom: 20px;
+      }
+      .service h3 {
+        font-size: 30px;
+        padding-top: 20px;
+      }
+      .service p {
+        font-size: 16px;
+        text-align: center;
+        padding-bottom: 20px;
+      }
+      .service a {
+        font-size: 18px;
+      }
+      .service a i {
+        font-size: 15px;
+      }
+      .buttons {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 50px;
+        gap: 20px;
+      }
+      .appointment_btn {
+        width: 200px;
+        height: 60px;
+        background-color: #009394;
+        color: #000;
+        border: none;
+        border-radius: 30px;
+        font-size: 18px;
+        transition: transform 0.1s;
+      }
+      .appointment_btn:hover {
+        transform: scale(1.1);
+      }
+      .more_services_btn {
+        width: 200px;
+        height: 60px;
+        background-color: #fff;
+        color: #000;
+        border: none;
+        border-radius: 30px;
+        font-size: 18px;
+        transition: transform 0.1s;
+      }
+      .more_services_btn:hover {
+        transform: scale(1.1);
+      }
+      .four {
+        background-color: #006270;
+        height: 90vh;
+        display: flex;
+        flex-direction: column;
+      }
+      .four h5 {
+        font-size: 12px;
+        color: #00b2ad;
+        text-transform: uppercase;
+        padding: 30px 0 5px 80px;
+      }
+      .four h2 {
+        font-size: 40px;
+        padding: 0 0 40px 80px;
+      }
+      .blogs {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 30px;
+      }
+      .blogs img {
+        width: 310px;
+        height: 200px;
+        background-size: cover;
+        background-repeat: no-repeat;
+        border-radius: 10px 0 0 0;
+      }
+      .blogs span {
+        font-size: 12px;
+        font-weight: lighter;
+        text-align: right;
+      }
+      .blogs h4 {
+        font-size: 18px;
+      }
+      .blogs p {
+        font-size: 14px;
+      }
+      .blogs a {
+        color: #000;
+        text-align: center;
+      }
+      .article {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+        width: 310px;
+        height: 370px;
+        background-color: #009394;
+        border-radius: 10px 0 10px 0;
+      }
+      .words {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+      }
+      footer {
+        height: 70vh;
+        background-color: #0b8da1;
+      }
+      .newsletter {
+        height: 35vh;
+        display: flex;
+        justify-content: center;
+        padding-top: 30px;
+        gap: 200px;
+        align-items: center;
+        background-image: linear-gradient(
+            to left,
+            rgba(0, 0, 0, 0.6),
+            rgba(0, 0, 0, 0.6)
+          ),
+          url(/images/doc.jpg);
+        background-size: cover;
+        background-repeat: no-repeat;
+      }
+      .newsletter h2 {
+        font-size: 28px;
+      }
+      .newsletter input {
+        height: 50px;
+        width: 300px;
+        border-radius: 30px;
+        outline: none;
+        border: none;
+      }
+      .newsletter button {
+        height: 38px;
+        width: 90px;
+        border: none;
+        border-radius: 30px;
+        background-color: #006270;
+      }
+      .about_us {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+        padding-right: 50px;
+      }
+      .about_us h2 {
+        font-size: 20px;
+      }
+      .about_us p {
+        font-size: 14px;
+      }
+      .about_us i {
+        margin-right: 5px;
+        font-size: 25px;
+      }
+      .pages {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        padding-right: 20px;
+      }
+      .pages h2 {
+        font-size: 18px;
+      }
+      .pages a {
+        font-size: 14px;
+      }
+      .directions {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+      }
+      .directions span {
+        color: #93a267;
+      }
+      .directions h2 {
+        font-size: 18px;
+      }
+      .directions p {
+        font-size: 14px;
+      }
+      .directions a {
+        text-transform: uppercase;
+        font-size: 15px;
+        text-decoration: underline;
+      }
+      .directions a:hover {
+        color: #93a267;
+      }
+      .main {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 100px;
+        margin-top: 20px;
+        height: 25vh;
+      }
+      .copyright {
+        background-color: #000;
+        height: 7vh;
+        margin-top: 22px;
+        display: flex;
+        align-items: center;
+      }
+      .copyright p {
+        color: #fff;
+        padding-left: 50px;
+      }
+    </style>
+  </head>
+  <body>
+    <section class="one">
+      <header>
+        <div class="navbar">
+          <div class="logo">
+            <a href="/hospital/index.html">Care Embrace Medical</a>
+          </div>
+
+          <ul class="links">
+            <li><a href="/hospital/index.html">Home</a></li>
+            <li><a href="/hospital/service.html">Services</a></li>
+            <li><a href="/hospital/contact.html">Contact</a></li>
+          </ul>
+          <div class="dropdown">
+            <button
+            style="background-color: #8bfff7b0; color: #000; border: none; margin-right: 10px;"
+              class="btn btn-secondary dropdown-toggle"
+              type="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              Get Started
+            </button>
+            <ul class="dropdown-menu">
+              <li>
+                <a class="dropdown-item" href="/hospital/signup.html">Log In</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="/hospital/signup.html"
+                  >Register</a
+                >
+              </li>
+              <li><hr class="dropdown-divider" /></li>
+              <li>
+                <button class="dropdown-item" id="logout">Log out</button>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="banner">
+        <div class="home">
+          <h1>
+            Best Medical &
+            <br />Healthcare Service <br />For Your Family
+          </h1>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing el
+            <br />eiusmod tempor incididunt ut labortju.
+          </p>
+          <button>Contact us</button>
+        </div>
+      </div>
+    </section>
+    <section class="two">
+      <div class="motto">
+        <div class="tiny_motto">
+          <i class="fa-solid fa-phone"></i>
+          <h3>Emergency call</h3>
+          <p>Lorem ipsum dolor sit amet consectetur.</p>
+          <button>+254 798 534 261</button>
+        </div>
+        <div class="tiny_motto">
+          <i class="fa-solid fa-heart-pulse"></i>
+          <h3>Quality services</h3>
+          <p>Lorem ipsum dolor sit amet consectetur.</p>
+          <button>Book Now</button>
+        </div>
+        <div class="tiny_motto">
+          <i class="fa-solid fa-cash-register"></i>
+          <h3>Affordable price</h3>
+          <p>Lorem ipsum dolor sit amet consectetur.</p>
+          <button>Contact us</button>
+        </div>
+      </div>
+    </section>
+    <section class="three">
+      <h2>Healthcare Services</h2>
+      <div class="services">
+        <div class="service">
+          <i class="fa-solid fa-tooth"></i>
+          <h3>Dental Care</h3>
+          <p>
+            Lorem ipsum dolor sit amet consecte adipisicing elit Atque, odit.
+          </p>
+          <a href="#">Learn more <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+        <div class="service">
+          <i class="fa-solid fa-eye"></i>
+          <h3>Eye Care</h3>
+          <p>
+            Lorem ipsum dolor sit amet consecte adipisicing elit. Eligendi,
+            nihil.
+          </p>
+          <a href="#">Learn more <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+        <div class="service">
+          <i class="fa-solid fa-stethoscope"></i>
+          <h3>General</h3>
+          <p>
+            Lorem ipsum dolor sit amet consecte adipisicing elit. Eligendi,
+            nihil.
+          </p>
+          <a href="#">Learn more <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+      </div>
+      <div class="services">
+        <div class="service">
+          <i class="fa-solid fa-apple-whole"></i>
+          <h3>Nutrition</h3>
+          <p>
+            Lorem ipsum dolor sit amet consecte adipisicing elit. Eligendi,
+            nihil.
+          </p>
+          <a href="#">Learn more <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+        <div class="service">
+          <i class="fa-solid fa-syringe"></i>
+          <h3>Vaccination</h3>
+          <p>
+            Lorem ipsum dolor sit amet consecte adipisicing elit. Eligendi,
+            nihil.
+          </p>
+          <a href="#">Learn more <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+        <div class="service">
+          <i class="fa-solid fa-baby-carriage"></i>
+          <h3>Pediatrics</h3>
+          <p>
+            Lorem ipsum dolor sit amet consecte adipisicing elit. Eligendi,
+            nihil.
+          </p>
+          <a href="#">Learn more <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+      </div>
+      <div class="buttons">
+        <button class="appointment_btn">Make Appointment</button>
+        <button class="more_services_btn">More Services</button>
+      </div>
+    </section>
+    <section class="four">
+      <h5>news & blogs</h5>
+      <h2>Blogs and Articles</h2>
+      <div class="blogs">
+        <div class="article">
+          <img src="/images/d8.png" alt="" />
+          <div class="words">
+            <span> - 29th May 2024</span>
+            <h4>Lorem ipsum dolor sit.</h4>
+            <p>
+              Lorem ipsum dolor sit amet <br />consectetur adipisicing elit.
+            </p>
+            <a href="">Read more <i class="fa-solid fa-arrow-right"></i></a>
+          </div>
+        </div>
+        <div class="article">
+          <img src="/images/d7.png" alt="" />
+          <div class="words">
+            <span> - 29th May 2024</span>
+            <h4>Lorem ipsum dolor sit.</h4>
+            <p>
+              Lorem ipsum dolor sit amet <br />consectetur adipisicing elit.
+            </p>
+            <a href="">Read more <i class="fa-solid fa-arrow-right"></i></a>
+          </div>
+        </div>
+        <div class="article">
+          <img src="/images/d8.png" alt="" />
+          <div class="words">
+            <span> - 29th May 2024</span>
+            <h4>Lorem ipsum dolor sit.</h4>
+            <p>
+              Lorem ipsum dolor sit amet <br />consectetur adipisicing elit.
+            </p>
+            <a href="">Read more <i class="fa-solid fa-arrow-right"></i></a>
+          </div>
+        </div>
+      </div>
+    </section>
+    <footer>
+      <div class="newsletter">
+        <div>
+          <h2>Subscribe to Our NewsLetter</h2>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. <br />
+            Labore, sapiente. Lorem ipsum dolor sit
+          </p>
+        </div>
+        <div>
+          <input type="text" name="Your email" /> <button>Subscribe</button>
+        </div>
+      </div>
+      <div class="main">
+        <div class="about_us">
+          <h2>Care Embrace Medical</h2>
+          <p>
+            Lorem ipsum dolor sit amet consectetur <br />
+            adipisicing elit. Molestias nostrum deleniti <br />
+            sequi sit odit facilis ducimus voluptas. <br />
+            Exercitationem, blanditiis voluptates?
+          </p>
+          <div>
+            <i class="fa-brands fa-instagram"></i>
+            <i class="fa-brands fa-twitter"></i>
+            <i class="fa-brands fa-facebook-f"></i>
+          </div>
+        </div>
+        <div class="pages">
+          <h2>Other pages</h2>
+          <a href="#">StaffReg</a>
+          <a href="#">PatientReg</a>
+          <a href="#">Services</a>
+          <a href="#">Contact</a>
+        </div>
+        <div class="directions">
+          <h2>Contact Info</h2>
+          <p>Nairobi, Kenya</p>
+          <p>Email: <span>joywanjirum4@gmail.com</span></p>
+          <p>Phone: (+254)768608469</p>
+          <a href="#">view directions</a>
+        </div>
+      </div>
+      <div class="copyright">
+        <p>© 2024 Care Embrace Medical. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+      crossorigin="anonymous"
+    ></script>
+
+    <script type="module">
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-app.js";
+      import {
+        getAuth,
+        onAuthStateChanged,
+        signOut,
+      } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-auth.js";
+      import {
+        getFirestore,
+        getDoc,
+        doc,
+      } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-firestore.js";
+
+      const firebaseConfig = {
+        apiKey: "AIzaSyDgJCHqDJDJ2iXN_PTX4iNtkXFeg4Slaxg",
+        authDomain: "login-form-d7944.firebaseapp.com",
+        projectId: "login-form-d7944",
+        storageBucket: "login-form-d7944.appspot.com",
+        messagingSenderId: "892546691212",
+        appId: "1:892546691212:web:41d647744a52e940b04ba9",
+      };
+
+      // Initialize Firebase
+      const app = initializeApp(firebaseConfig);
+
+      const auth = getAuth();
+      const db = getFirestore();
+      const logoutButton = document.getElementById("logout");
+
+      logoutButton.addEventListener("click", () => {
+        localStorage.removeItem("loggedInUserId");
+        signOut(auth)
+          .then(() => {
+            alert("Logged Out Successfully");
+            window.location.href = "signup.html";
+          })
+          .catch((error) => {
+            console.error("Error Signing out:", error);
+          });
+      });
+    </script>
+  </body>
+</html>
