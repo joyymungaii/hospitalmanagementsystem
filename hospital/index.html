@@ -50,7 +50,7 @@
         letter-spacing: -0.08em;
       }
 
-      .logo a:hover{
+      .logo a:hover {
         color: #000;
       }
 
@@ -85,6 +85,7 @@
         background-size: cover;
         background-position: top;
         background-repeat: no-repeat;
+        padding-left: 10px;
       }
       .home {
         padding-right: 850px;
@@ -115,6 +116,137 @@
       .banner button:hover {
         transform: scale(1.1);
       }
+
+      .banner button a:hover{
+        color: #000;
+      }
+
+
+      /* The Modal (background) */
+      .modal {
+        display: none; /* Hidden by default */
+        position: fixed; /* Stay in place */
+        z-index: 1; /* Sit on top */
+        padding-top: 100px; /* Location of the box */
+        left: 0;
+        top: 0;
+        width: 100%; /* Full width */
+        height: 100%; /* Full height */
+        overflow: auto; /* Enable scroll if needed */
+        background-color: rgb(0, 0, 0); /* Fallback color */
+        background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+      }
+
+      /* Modal Content */
+      .modal-content {
+        position: relative;
+        background-color: #fefefe;
+        margin: auto;
+        padding: 0;
+        border: 1px solid #888;
+        width: 60%;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
+          0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        -webkit-animation-name: animatetop;
+        -webkit-animation-duration: 0.4s;
+        animation-name: animatetop;
+        animation-duration: 0.4s;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+
+      /* Add Animation */
+      @-webkit-keyframes animatetop {
+        from {
+          top: -300px;
+          opacity: 0;
+        }
+        to {
+          top: 0;
+          opacity: 1;
+        }
+      }
+
+      @keyframes animatetop {
+        from {
+          top: -300px;
+          opacity: 0;
+        }
+        to {
+          top: 0;
+          opacity: 1;
+        }
+      }
+
+      /* The Close Button */
+      .close {
+        color: #000;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+      }
+
+      .close:hover,
+      .close:focus {
+        color: #000;
+        text-decoration: none;
+        cursor: pointer;
+      }
+
+      .modal-header {
+        padding: 2px 10px;
+        color: black;
+      }
+
+      .modal-body {
+        display: flex;
+        gap: 10px;
+        line-height: 30px;
+        padding-left: 20px;
+      }
+
+      .modal-body input {
+        width: 100px;
+        height: 25px;
+        margin-bottom: 15px;
+      }
+
+      .modal-body select {
+        width: 150px;
+        height: 30px;
+      }
+
+      .modal-bodyy {
+        display: flex;
+        padding-left: 20px;
+        gap: 10px;
+        line-height: 30px;
+      }
+
+      .modal-bodyy input {
+        height: 25px;
+        width: 100px;
+      }
+
+      .modal-bodyy select {
+        width: 150px;
+        height: 30px;
+      }
+
+      .mode button {
+        width: 100px;
+        height: 40px;
+        background-color: #888;
+        border-radius: 5px;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        font-size: 18px;
+        font-weight: 700;
+        margin: 20px 0 30px 250px;
+      }
+
       .two {
         height: 45vh;
         background-color: #006270;
@@ -158,7 +290,7 @@
         padding-left: 5px;
       }
       .tiny_motto p {
-        padding-left: 5px;
+        text-align: center;
       }
       .tiny_motto button {
         margin-top: 10px;
@@ -226,7 +358,7 @@
         margin-top: 50px;
         gap: 20px;
       }
-      .appointment_btn {
+      #myBtn {
         width: 200px;
         height: 60px;
         background-color: #009394;
@@ -236,7 +368,7 @@
         font-size: 18px;
         transition: transform 0.1s;
       }
-      .appointment_btn:hover {
+      #myBtn:hover {
         transform: scale(1.1);
       }
       .more_services_btn {
@@ -252,6 +384,12 @@
       .more_services_btn:hover {
         transform: scale(1.1);
       }
+
+      .more_services_btn a:hover{
+        color: #000;
+      }
+
+
       .four {
         background-color: #006270;
         height: 90vh;
@@ -424,7 +562,7 @@
       <header>
         <div class="navbar">
           <div class="logo">
-            <a href="/hospital/index.html">Care Embrace Medical</a>
+            <a href="/hospital/index.html">Manyatta Hospital</a>
           </div>
 
           <ul class="links">
@@ -434,7 +572,12 @@
           </ul>
           <div class="dropdown">
             <button
-            style="background-color: #8bfff7b0; color: #000; border: none; margin-right: 10px;"
+              style="
+                background-color: #8bfff7b0;
+                color: #000;
+                border: none;
+                margin-right: 10px;
+              "
               class="btn btn-secondary dropdown-toggle"
               type="button"
               data-bs-toggle="dropdown"
@@ -466,10 +609,12 @@
             <br />Healthcare Service <br />For Your Family
           </h1>
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing el
-            <br />eiusmod tempor incididunt ut labortju.
+            Lorem ipsum dolor sit amet, consectetur a<br />dipiscing el
+            eiusmod tempor incididunt ut labortju.
           </p>
-          <button>Contact us</button>
+
+          <button> <a href="contact.html">Contact us</a></button>
+
         </div>
       </div>
     </section>
@@ -486,6 +631,7 @@
           <h3>Quality services</h3>
           <p>Lorem ipsum dolor sit amet consectetur.</p>
           <button>Book Now</button>
+          
         </div>
         <div class="tiny_motto">
           <i class="fa-solid fa-cash-register"></i>
@@ -555,8 +701,45 @@
         </div>
       </div>
       <div class="buttons">
-        <button class="appointment_btn">Make Appointment</button>
-        <button class="more_services_btn">More Services</button>
+        <button id="myBtn">Make Appointment</button>
+        <div id="myModal" class="modal">
+          <!-- Modal content -->
+          <div class="modal-content">
+            <div class="modal-header">
+              <h2>Appointment</h2>
+              <span class="close">&times;</span>
+            </div>
+            <div class="modal-body">
+              <label>Name</label>
+              <input type="text" />
+              <label>Email</label>
+              <input type="text" />
+              <label>Date</label>
+              <input type="date" />
+              <label>Type</label>
+              <select name="" id="">
+                <option value="walk-in">Walk-in</option>
+                <option value="telephone">Telephone</option>
+              </select>
+            </div>
+            <div class="modal-bodyy">
+              <label>Age</label>
+              <input type="text" />
+              <label>Phone number</label>
+              <input type="text" />
+              <label>Gender</label>
+              <select name="" id="">
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+              </select>
+            </div>
+            <div class="mode">
+              <button id="btn-confirm">Confirm</button>
+            </div>
+          </div>
+        </div>
+        
+        <button class="more_services_btn"> <a href="contact.html">More Services</a> </button>
       </div>
     </section>
     <section class="four">
@@ -676,6 +859,41 @@
 
       // Initialize Firebase
       const app = initializeApp(firebaseConfig);
+
+      // Get the modal
+      var modal = document.getElementById("myModal");
+
+      // Get the button that opens the modal
+      var btn = document.getElementById("myBtn");
+
+
+      // Get the <span> element that closes the modal
+      var span = document.getElementsByClassName("close")[0];
+
+      //Get the cornfirm button
+      var Btn = document.getElementById("btn-confirm");
+
+      // When the user clicks the button, open the modal
+      btn.onclick = function () {
+        modal.style.display = "block";
+      };
+
+      // When the user clicks on <span> (x), close the modal
+      span.onclick = function () {
+        modal.style.display = "none";
+      };
+
+      Btn.onclick = function () {
+        modal.style.display = "none";
+        alert("Appointment Made Successfully");
+      };
+
+      // When the user clicks anywhere outside of the modal, close it
+      window.onclick = function (event) {
+        if (event.target == modal) {
+          modal.style.display = "none";
+        }
+      };
 
       const auth = getAuth();
       const db = getFirestore();
