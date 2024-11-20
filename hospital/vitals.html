@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script type="module" src="patient.js"></script>
+    <style>
+      .table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+      .table,
+      .table th,
+      .table td {
+        border: 1px solid black;
+      }
+      .table th,
+      .table td {
+        padding: 8px;
+        text-align: left;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h3>Registered Patients</h3>
+      <table class="table table-bordered" id="patientTable">
+        <thead>
+          <tr>
+            <th>First Name</th>
+            <th>Middle Name</th>
+            <th>Surname</th>
+            <th>DOB</th>
+            <th>Gender</th>
+            <th>County</th>
+            <th>Email</th>
+            <th>Telephone</th>
+            <th>Marital Status</th>
+            <th>Reg No</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Patient data will be appended here -->
+        </tbody>
+      </table>
+    </div>
+    <!--<script>
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.0/firebase-app.js";
+      import {
+        getDatabase,
+        ref,
+        get,
+        child,
+      } from "https://www.gstatic.com/firebasejs/10.13.0/firebase-database.js";
+
+      // Your Firebase configuration
+      const firebaseConfig = {
+        apiKey: "AIzaSyBw-LBdjMgvxWFQScTqSEEMcHXNmdQh91g",
+        authDomain: "hospital-system-b6a60.firebaseapp.com",
+        projectId: "hospital-system-b6a60",
+        storageBucket: "hospital-system-b6a60.appspot.com",
+        messagingSenderId: "626119506670",
+        appId: "1:626119506670:web:22d462a6686f1de6e491ff",
+      };
+
+      // Initialize Firebase
+      const app = initializeApp(firebaseConfig);
+      const db = getDatabase();
+
+      // Function to load patient data from Firebase
+      function loadPatientData() {
+        const dbRef = ref(db);
+        get(child(dbRef, "ThePatients"))
+          .then((snapshot) => {
+            if (snapshot.exists()) {
+              const patients = snapshot.val();
+              const tableBody = document
+                .getElementById("patientTable")
+                .getElementsByTagName("tbody")[0];
+
+              // Clear existing rows
+              tableBody.innerHTML = "";
+
+              // Loop through each patient and create a table row
+              for (const regNo in patients) {
+                const patient = patients[regNo];
+                const newRow = tableBody.insertRow();
+
+                newRow.insertCell(0).innerText = patient.NameOfPat;
+                newRow.insertCell(1).innerText = patient.middleNamePat;
+                newRow.insertCell(2).innerText = patient.surNamePat;
+                newRow.insertCell(3).innerText = patient.DOB;
+                newRow.insertCell(4).innerText = patient.Gender;
+                newRow.insertCell(5).innerText = patient.County;
+                newRow.insertCell(6).innerText = patient.Email;
+                newRow.insertCell(7).innerText = patient.Telephone;
+                newRow.insertCell(8).innerText = patient.Status;
+                newRow.insertCell(9).innerText = patient.Rno;
+              }
+            } else {
+              console.log("No data available");
+            }
+          })
+          .catch((error) => {
+            console.error("Error fetching data: ", error);
+          });
+      }
+
+      // Load patient data when the page is loaded
+      window.onload = loadPatientData;
+    </script>-->
+  </body>
+</html>
