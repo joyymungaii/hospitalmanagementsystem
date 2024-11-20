@@ -16,7 +16,7 @@
       integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
       crossorigin="anonymous"
     />
-
+    <script type="module" src="floatwindow.js"></script>
     <title>Hospital</title>
     <style>
       * {
@@ -707,27 +707,29 @@
             </div>
             <div class="modal-body">
               <label>Name</label>
-              <input type="text" />
+              <input type="text" id="name" />
               <label>Email</label>
-              <input type="text" />
+              <input type="text" id="email" />
               <label>Date</label>
-              <input type="date" />
+              <input type="date" id="date" />
               <label>Type</label>
-              <select name="" id="">
+              <select name="" id="type">
                 <option value="walk-in">Walk-in</option>
                 <option value="telephone">Telephone</option>
               </select>
             </div>
             <div class="modal-bodyy">
               <label>Age</label>
-              <input type="text" />
+              <input type="text" id="age" />
               <label>Phone number</label>
-              <input type="text" />
+              <input type="text" id="phone" />
               <label>Gender</label>
-              <select name="" id="">
+              <select name="" id="gender">
                 <option value="male">Male</option>
                 <option value="female">Female</option>
               </select>
+              <label for="">RegNo</label>
+              <input type="number" id="RegNo" required>
             </div>
             <div class="mode">
               <button id="btn-confirm">Confirm</button>
@@ -834,45 +836,79 @@
     ></script>
 
     <script type="module">
-      import { initializeApp } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-app.js";
+      // Import the functions you need from the SDKs you need
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js";
+      // TODO: Add SDKs for Firebase products that you want to use
+      // https://firebase.google.com/docs/web/setup#available-libraries
 
+      // Your web app's Firebase configuration
       const firebaseConfig = {
-        apiKey: "AIzaSyDgJCHqDJDJ2iXN_PTX4iNtkXFeg4Slaxg",
-        authDomain: "login-form-d7944.firebaseapp.com",
-        projectId: "login-form-d7944",
-        storageBucket: "login-form-d7944.appspot.com",
-        messagingSenderId: "892546691212",
-        appId: "1:892546691212:web:41d647744a52e940b04ba9",
+        apiKey: "AIzaSyBw-LBdjMgvxWFQScTqSEEMcHXNmdQh91g",
+        authDomain: "hospital-system-b6a60.firebaseapp.com",
+        databaseURL:
+          "https://hospital-system-b6a60-default-rtdb.firebaseio.com",
+        projectId: "hospital-system-b6a60",
+        storageBucket: "hospital-system-b6a60.firebasestorage.app",
+        messagingSenderId: "626119506670",
+        appId: "1:626119506670:web:d84c9dddfe2096cde491ff",
       };
 
       // Initialize Firebase
       const app = initializeApp(firebaseConfig);
-      // Get the modal
-      var modal = document.getElementById("myModal");
-      // Get the button that opens the modal
-      var btn = document.getElementById("myBtn");
-      // Get the <span> element that closes the modal
-      var span = document.getElementsByClassName("close")[0];
-      //Get the cornfirm button
-      var Btn = document.getElementById("btn-confirm");
-      // When the user clicks the button, open the modal
-      btn.onclick = function () {
-        modal.style.display = "block";
-      };
-      // When the user clicks on <span> (x), close the modal
-      span.onclick = function () {
-        modal.style.display = "none";
-      };
-      Btn.onclick = function () {
-        modal.style.display = "none";
-        alert("Appointment Made Successfully");
-      };
-      // When the user clicks anywhere outside of the modal, close it
-      window.onclick = function (event) {
-        if (event.target == modal) {
-          modal.style.display = "none";
-        }
-      };
+      import {
+        getDatabase,
+        ref,
+        get,
+        set,
+        child,
+        update,
+        remove,
+      } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-database.js";
+
+      const db = getDatabase();
+
+      //REFERENCE
+      var Name = document.getElementById("name");
+      var Email = document.getElementById("email");
+      var dateBox = document.getElementById("date");
+      var Type = document.getElementById("type");
+      var Age = document.getElementById("age");
+      var PhoneNo = document.getElementById("phone");
+      var Gender = document.getElementById("gender");
+      var RegNo = document.getElementById("RegNo")
+
+      var Save = document.getElementById("btn-confirm");
+
+      function clearInputs() {
+        Name.value = "";
+        Email.value = "";
+        dateBox.value = "";
+        Type.value = "";
+        Age.value = "";
+        PhoneNo.value = "";
+        Gender.selectedIndex = 0; // Reset to first option
+        RegNo.value = "";
+      }
+
+      function InsertData() {
+        set(ref(db, "Appointments/" + RegNo.value), {
+          Name: Name.value,
+          Email: Email.value,
+          DOB: dateBox.value,
+          Type: Type.value,
+          Age: Age.value,
+          PhoneNo: PhoneNo.value,
+          Gender: Gender.value,
+        })
+          .then(() => {
+            alert("data saved successfully");
+          })
+          .catch((error) => {
+            alert("unsuccessful, error" + error);
+          });
+        clearInputs();
+      }
+      Save.addEventListener("click", InsertData);
     </script>
   </body>
 </html>

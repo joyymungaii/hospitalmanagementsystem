@@ -3,14 +3,13 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Read Patients</title>
-    <!-- Include Bootstrap CSS for table styling (optional) -->
     <link
       rel="stylesheet"
       href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
     />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <title>Appointment Booking Calendar</title>
     <style>
       * {
         margin: 0;
@@ -37,9 +36,6 @@
       .sidenav {
         width: 20%;
         margin-left: 10px;
-      }
-      .list {
-        width: 80%;
       }
     </style>
   </head>
@@ -91,15 +87,17 @@
           <div class="list">
             <div class="container">
               <h3>Registered Staff</h3>
-              <table class="table table-bordered" id="staffTable">
+              <table class="table table-bordered" id="appointmentTable">
                 <thead>
                   <tr>
                     <th>Reg No</th>
-                    <th>First Name</th>
-                    <th>Middle Name</th>
-                    <th>Surname</th>
-                    <th>Department</th>
+                    <th>Name</th>
                     <th>Email</th>
+                    <th>DOB</th>
+                    <th>Type</th>
+                    <th>Age</th>
+                    <th>Phone Number</th>
+                    <th>Gender</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -113,67 +111,63 @@
     </div>
 
     <script type="module">
-      import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.0/firebase-app.js";
-      import {
-        getDatabase,
-        ref,
-        onValue,
-        get,
-        child,
-      } from "https://www.gstatic.com/firebasejs/10.13.0/firebase-database.js";
-
-      // Your web app's Firebase configuration
-      const firebaseConfig = {
-        apiKey: "AIzaSyBw-LBdjMgvxWFQScTqSEEMcHXNmdQh91g",
-        authDomain: "hospital-system-b6a60.firebaseapp.com",
-        databaseURL:
-          "https://hospital-system-b6a60-default-rtdb.firebaseio.com",
-        projectId: "hospital-system-b6a60",
-        storageBucket: "hospital-system-b6a60.appspot.com",
-        messagingSenderId: "626119506670",
-        appId: "1:626119506670:web:367e9abfc6473860e491ff",
-      };
-
-      // Initialize Firebase
-      const app = initializeApp(firebaseConfig);
-      const db = getDatabase(app);
-
-      function loadStaffData() {
-        const staffRef = ref(db, "TheStaff");
-        get(staffRef)
-          .then((snapshot) => {
-            if (snapshot.exists()) {
-              const staffs = snapshot.val();
-              const tableBody = document
-                .getElementById("staffTable")
-                .getElementsByTagName("tbody")[0];
-
-              // Clear existing rows
-              tableBody.innerHTML = "";
-
-              // Loop through each staff and create a table row
-              for (const regNo in staffs) {
-                const staff = staffs[regNo];
-                const newRow = tableBody.insertRow();
-
-                newRow.insertCell(0).innerText = staff.Rno;
-                newRow.insertCell(1).innerText = staff.NameOfStaff;
-                newRow.insertCell(2).innerText = staff.MiddleNameStaff;
-                newRow.insertCell(3).innerText = staff.SurNameStaff;
-                newRow.insertCell(4).innerText = staff.Specialty;
-                newRow.insertCell(5).innerText = staff.Email;
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.0/firebase-app.js";
+        import { getDatabase, ref, get, child } from "https://www.gstatic.com/firebasejs/10.13.0/firebase-database.js";
+      
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+          apiKey: "AIzaSyBw-LBdjMgvxWFQScTqSEEMcHXNmdQh91g",
+          authDomain: "hospital-system-b6a60.firebaseapp.com",
+          databaseURL: "https://hospital-system-b6a60-default-rtdb.firebaseio.com",
+          projectId: "hospital-system-b6a60",
+          storageBucket: "hospital-system-b6a60.appspot.com",
+          messagingSenderId: "626119506670",
+          appId: "1:626119506670:web:367e9abfc6473860e491ff",
+        };
+      
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const db = getDatabase(app);
+      
+        function loadAppointmentData() {
+          const appointRef = ref(db, "Appointments");
+          get(appointRef)
+            .then((snapshot) => {
+              if (snapshot.exists()) {
+                const Appointment = snapshot.val();
+                const tableBody = document
+                  .getElementById("appointmentTable")
+                  .getElementsByTagName("tbody")[0];
+      
+                // Clear existing rows
+                tableBody.innerHTML = "";
+      
+                // Loop through each appointment and create a table row
+                for (const regNo in Appointment) {
+                  const AppointList = Appointment[regNo];
+                  const newRow = tableBody.insertRow();
+      
+                  newRow.insertCell(0).innerText = AppointList.RegNo;
+                  newRow.insertCell(1).innerText = AppointList.Name;
+                  newRow.insertCell(2).innerText = AppointList.Email;
+                  newRow.insertCell(3).innerText = AppointList.DOB;
+                  newRow.insertCell(4).innerText = AppointList.Type;
+                  newRow.insertCell(5).innerText = AppointList.Age;
+                  newRow.insertCell(6).innerText = AppointList.PhoneNo;
+                  newRow.insertCell(7).innerText = AppointList.Gender;
+                }
+              } else {
+                console.log("No data available");
               }
-            } else {
-              console.log("No data available");
-            }
-          })
-          .catch((error) => {
-            console.error("Error fetching data: ", error);
-          });
-      }
-
-      // Load staff data when the page is loaded
-      window.onload = loadStaffData;
-    </script>
+            })
+            .catch((error) => {
+              console.error("Error fetching data: ", error);
+            });
+        }
+      
+        // Load appointment data when the page is loaded
+        window.onload = loadAppointmentData;
+      </script>
+      
   </body>
 </html>
