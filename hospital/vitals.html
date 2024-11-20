@@ -4,48 +4,192 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <script type="module" src="patient.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <style>
-      .table {
+      /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+      .row.content {
+        height: 450px;
+      }
+
+      /* Set gray background color and 100% height */
+      .sidenav {
+        background-color: #f1f1f1;
+        height: 100%;
+        margin-top: 20px;
+
+      }
+
+      /* On small screens, set height to 'auto' for the grid */
+      @media screen and (max-width: 767px) {
+        .row.content {
+          height: auto;
+        }
+      }
+
+      .banner {
+        height: 80vh;
+        background-color: #f1f1f1;
+        padding-top: 20px;
+        padding-left: 15px;
         width: 100%;
-        border-collapse: collapse;
+        display: flex;
+        flex-direction: column;
       }
-      .table,
-      .table th,
-      .table td {
-        border: 1px solid black;
+
+      .banner h2 {
+        font-size: 20px;
+        padding-left: 30px;
       }
-      .table th,
-      .table td {
-        padding: 8px;
-        text-align: left;
+
+      label,
+      select {
+        font-size: 14px;
+        padding-right: 20px;
+      }
+      input {
+        border-radius: 2px;
+        outline: none;
+        border: none;
+        width: 200px;
+        height: 30px;
+      }
+      ::placeholder {
+        font-size: 16px;
+      }
+      select {
+        width: 200px;
+        margin-top: 10px;
+        height: 30px;
+        border: none;
+      }
+      h3 {
+        font-size: 16px;
+        font-weight: bolder;
+      }
+      .nutrition {
+        display: flex;
+        gap: 100px;
+        padding-bottom: 10px;
+      }
+
+      .nutrition1 {
+        display: flex;
+        gap: 70px;
+        padding-bottom: 10px;
+      }
+
+      button {
+        font-size: 15px;
+        text-transform: uppercase;
+        font-weight: bold;
+        margin: 10px;
+        padding: 5px;
+        border-radius: 5px;
       }
     </style>
   </head>
   <body>
-    <div class="container">
-      <h3>Registered Patients</h3>
-      <table class="table table-bordered" id="patientTable">
-        <thead>
-          <tr>
-            <th>First Name</th>
-            <th>Middle Name</th>
-            <th>Surname</th>
-            <th>DOB</th>
-            <th>Gender</th>
-            <th>County</th>
-            <th>Email</th>
-            <th>Telephone</th>
-            <th>Marital Status</th>
-            <th>Reg No</th>
-          </tr>
-        </thead>
-        <tbody>
-          <!-- Patient data will be appended here -->
-        </tbody>
-      </table>
+    <nav class="navbar navbar-inverse visible-xs">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button
+            type="button"
+            class="navbar-toggle"
+            data-toggle="collapse"
+            data-target="#myNavbar"
+          >
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Logo</a>
+        </div>
+        <div class="collapse navbar-collapse" id="myNavbar">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="#">Dashboard</a></li>
+            <li><a href="#">Age</a></li>
+            <li><a href="#">Gender</a></li>
+            <li><a href="#">Geo</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container-fluid">
+      <div class="row content">
+        <div class="col-sm-3 sidenav hidden-xs">
+          <h2>Manyatta Hospital</h2>
+          <ul class="nav nav-pills nav-stacked">
+            <li class="active"><a href="nana.html">Dashboard</a></li>
+            <li><a href="patientreg.html">Patients Registration</a></li>
+            <li><a href="staffreg.html">Staff Registration</a></li>
+            <li><a href="vitals.html">Vitals</a></li>
+            <li><a href="plist.html">Patients List</a></li>
+            <li><a href="slist.html">Staff List</a></li>
+          </ul>
+          <br />
+        </div>
+        <br />
+
+        <div class="col-sm-9">
+          <section class="one">
+            <div class="banner">
+              <h3>Vitals Details</h3>
+              <div class="nutrition">
+                <div>
+                  <label for="kg">KiloGrams</label>
+                  <input type="number" id="kg" />
+                </div>
+
+                <div>
+                  <label for="height">Height(cm)</label>
+                  <input type="number" id="height" />
+                </div>
+
+                <div>
+                  <label for="temp">Temperature</label>
+                  <input type="number" id="temp" />
+                </div>
+              </div>
+
+              <div class="nutrition1">
+                <div>
+                  <label for="pressure">Blood Pressure</label>
+                  <input type="number" id="pressure" />
+                </div>
+
+                <div>
+                  <label for="pulse">Pulse Rate(/min)</label>
+                  <input type="number" id="pulse" />
+                </div>
+
+                <div>
+                  <label for="BMI">BMI</label>
+                  <input type="number" id="bmi" />
+                </div>
+              </div>
+              <div>
+                <label for="">RegNo</label>
+                <input type="number" id="RegNo" required />
+              </div>
+              <div>
+                <button id="save">save</button>
+                <button id="del">Delete</button>
+                <button id="update">Update</button>
+                <button id="fetch">Fetch</button>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
     </div>
-    <!--<script>
+
+    <script>
       import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.0/firebase-app.js";
       import {
         getDatabase,
@@ -66,49 +210,134 @@
 
       // Initialize Firebase
       const app = initializeApp(firebaseConfig);
+
+      import {
+        getDatabase,
+        ref,
+        get,
+        set,
+        child,
+        update,
+        remove,
+      } from "https://www.gstatic.com/firebasejs/10.13.0/firebase-database.js";
+
       const db = getDatabase();
+      var regNo = document.getElementById("RegNo");
+      var firstName = document.getElementById("fname");
+      var middleName = document.getElementById("mname");
+      var surName = document.getElementById("sname");
+      var Kg = document.getElementById("kg");
+      var Height = document.getElementById("height");
+      var Temp = document.getElementById("temp");
+      var Pressure = document.getElementById("pressure");
+      var Pulse = document.getElementById("pulse");
+      var BMI = document.getElementById("bmi");
 
-      // Function to load patient data from Firebase
-      function loadPatientData() {
-        const dbRef = ref(db);
-        get(child(dbRef, "ThePatients"))
-          .then((snapshot) => {
-            if (snapshot.exists()) {
-              const patients = snapshot.val();
-              const tableBody = document
-                .getElementById("patientTable")
-                .getElementsByTagName("tbody")[0];
+      var Save = document.getElementById("save");
+      var Delete = document.getElementById("del");
+      var Update = document.getElementById("update");
+      var Fetch = document.getElementById("fetch");
 
-              // Clear existing rows
-              tableBody.innerHTML = "";
+      function clearInputs() {
+        regNo.value = "";
+        firstName.value = "";
+        middleName.value = "";
+        surName.value = "";
+        Kg.value = "";
+        Height.value = "";
+        Temp.value = "";
+        Pressure.value = "";
+        Pulse.value = "";
+        BMI.value = "";
+      }
 
-              // Loop through each patient and create a table row
-              for (const regNo in patients) {
-                const patient = patients[regNo];
-                const newRow = tableBody.insertRow();
-
-                newRow.insertCell(0).innerText = patient.NameOfPat;
-                newRow.insertCell(1).innerText = patient.middleNamePat;
-                newRow.insertCell(2).innerText = patient.surNamePat;
-                newRow.insertCell(3).innerText = patient.DOB;
-                newRow.insertCell(4).innerText = patient.Gender;
-                newRow.insertCell(5).innerText = patient.County;
-                newRow.insertCell(6).innerText = patient.Email;
-                newRow.insertCell(7).innerText = patient.Telephone;
-                newRow.insertCell(8).innerText = patient.Status;
-                newRow.insertCell(9).innerText = patient.Rno;
-              }
-            } else {
-              console.log("No data available");
-            }
+      //INSERT DATA FUNCTION
+      function InsertData() {
+        set(ref(db, "ThePatients/" + regNo.value), {
+          Rno: regNo.value,
+          NameOfPat: firstName.value,
+          middleNamePat: middleName.value,
+          surNamePat: surName.value,
+          Kg: Kg.value,
+          Height: Height.value,
+          Temp: Temp.value,
+          Pressure: Pressure.value,
+          Pulse: Pulse.value,
+          BMI: BMI.value,
+        })
+          .then(() => {
+            alert("data saved successfully");
           })
           .catch((error) => {
-            console.error("Error fetching data: ", error);
+            alert("unsuccessful, error" + error);
           });
       }
 
-      // Load patient data when the page is loaded
-      window.onload = loadPatientData;
-    </script>-->
+      //SELECT DATA FUNCTION
+      function SelectData() {
+        const dbref = ref(db);
+
+        get(child(dbref, "ThePatients/" + regNo.value))
+          .then((snapshot) => {
+            if (snapshot.exists()) {
+              regNo.value = snapshot.val().Rno;
+              firstName.value = snapshot.val().NameOfPat;
+              middleName.value = snapshot.val().middleNamePat;
+              surName.value = snapshot.val().surNamePat;
+              Kg.value = snapshot.val().Kg;
+              Height.value = snapshot.val().Height;
+              Temp.value = snapshot.val().Temp;
+              Pressure.value = snapshot.val().Pressure;
+              Pulse.value = snapshot.val().Pulse;
+              BMI.value = snapshot.val().BMI;
+            } else {
+              alert("No data found");
+            }
+          })
+          .catch((error) => {
+            alert("unsuccessful, error" + error);
+          });
+      }
+
+      //UPDATE DATA FUNCTION
+      function UpdateData() {
+        update(ref(db, "ThePatients/" + regNo.value), {
+          Rno: regNo.value,
+          NameOfPat: firstName.value,
+          middleNamePat: middleName.value,
+          surNamePat: surName.value,
+          Kg: Kg.value,
+          Height: Height.value,
+          Temp: Temp.value,
+          Pressure: Pressure.value,
+          Pulse: Pulse.value,
+          BMI: BMI.value,
+        })
+          .then(() => {
+            alert("data saved successfully");
+            clearInputs(); // Clear inputs after successful submission
+          })
+          .catch((error) => {
+            alert("unsuccessful, error" + error);
+          });
+      }
+
+      //DELETE DATA FUNCTION
+      function DeleteData() {
+        remove(ref(db, "ThePatients/" + regNo.value))
+          .then(() => {
+            alert("data deleted successfully");
+          })
+          .catch((error) => {
+            alert("unsuccessful, error" + error);
+          });
+      }
+
+      // Assign Events to Buttons
+      Save.addEventListener("click", InsertData);
+      Update.addEventListener("click", UpdateData);
+      Fetch.addEventListener("click", SelectData);
+      Delete.addEventListener("click", DeleteData);
+    </script>
   </body>
 </html>

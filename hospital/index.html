@@ -117,10 +117,9 @@
         transform: scale(1.1);
       }
 
-      .banner button a:hover{
+      .banner button a:hover {
         color: #000;
       }
-
 
       /* The Modal (background) */
       .modal {
@@ -385,10 +384,9 @@
         transform: scale(1.1);
       }
 
-      .more_services_btn a:hover{
+      .more_services_btn a:hover {
         color: #000;
       }
-
 
       .four {
         background-color: #006270;
@@ -609,12 +607,11 @@
             <br />Healthcare Service <br />For Your Family
           </h1>
           <p>
-            Lorem ipsum dolor sit amet, consectetur a<br />dipiscing el
-            eiusmod tempor incididunt ut labortju.
+            Lorem ipsum dolor sit amet, consectetur a<br />dipiscing el eiusmod
+            tempor incididunt ut labortju.
           </p>
 
-          <button> <a href="contact.html">Contact us</a></button>
-
+          <button><a href="contact.html">Contact us</a></button>
         </div>
       </div>
     </section>
@@ -631,7 +628,6 @@
           <h3>Quality services</h3>
           <p>Lorem ipsum dolor sit amet consectetur.</p>
           <button>Book Now</button>
-          
         </div>
         <div class="tiny_motto">
           <i class="fa-solid fa-cash-register"></i>
@@ -738,8 +734,10 @@
             </div>
           </div>
         </div>
-        
-        <button class="more_services_btn"> <a href="contact.html">More Services</a> </button>
+
+        <button class="more_services_btn">
+          <a href="contact.html">More Services</a>
+        </button>
       </div>
     </section>
     <section class="four">
@@ -837,16 +835,6 @@
 
     <script type="module">
       import { initializeApp } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-app.js";
-      import {
-        getAuth,
-        onAuthStateChanged,
-        signOut,
-      } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-auth.js";
-      import {
-        getFirestore,
-        getDoc,
-        doc,
-      } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-firestore.js";
 
       const firebaseConfig = {
         apiKey: "AIzaSyDgJCHqDJDJ2iXN_PTX4iNtkXFeg4Slaxg",
@@ -859,57 +847,32 @@
 
       // Initialize Firebase
       const app = initializeApp(firebaseConfig);
-
       // Get the modal
       var modal = document.getElementById("myModal");
-
       // Get the button that opens the modal
       var btn = document.getElementById("myBtn");
-
-
       // Get the <span> element that closes the modal
       var span = document.getElementsByClassName("close")[0];
-
       //Get the cornfirm button
       var Btn = document.getElementById("btn-confirm");
-
       // When the user clicks the button, open the modal
       btn.onclick = function () {
         modal.style.display = "block";
       };
-
       // When the user clicks on <span> (x), close the modal
       span.onclick = function () {
         modal.style.display = "none";
       };
-
       Btn.onclick = function () {
         modal.style.display = "none";
         alert("Appointment Made Successfully");
       };
-
       // When the user clicks anywhere outside of the modal, close it
       window.onclick = function (event) {
         if (event.target == modal) {
           modal.style.display = "none";
         }
       };
-
-      const auth = getAuth();
-      const db = getFirestore();
-      const logoutButton = document.getElementById("logout");
-
-      logoutButton.addEventListener("click", () => {
-        localStorage.removeItem("loggedInUserId");
-        signOut(auth)
-          .then(() => {
-            alert("Logged Out Successfully");
-            window.location.href = "signup.html";
-          })
-          .catch((error) => {
-            console.error("Error Signing out:", error);
-          });
-      });
     </script>
   </body>
 </html>

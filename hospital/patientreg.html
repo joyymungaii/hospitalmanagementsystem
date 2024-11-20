@@ -7,7 +7,6 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-  <script type="module" src="patient.js"></script>
   <style>
     /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
     .row.content {height: 550px}
@@ -25,9 +24,9 @@
     }
 
     .banner {
-        height: 120vh;
+        height: 100vh;
         background-color: #f1f1f1;
-        padding-top: 20px;
+        padding-top: 10px;
         padding-left: 15px;
         width: 100%;
         display: flex;
@@ -60,21 +59,27 @@
         height: 30px;
         border: none;
       }
+      textarea{
+        border: none;
+        outline: none;
+        width: 300px;
+      }
       .onee{
         display: flex;
         gap: 80px;
-        margin-bottom: 5px;
+        margin-bottom: 20px;
       }
 
       .twoo{
         display: flex;
         gap: 100px;
-        margin-bottom: 10px;
+        margin-bottom: 20px;
       }
 
       .threee{
         display: flex;
-        gap: 50px;
+        gap: 20px;
+
       }
 
       .dob{
@@ -91,27 +96,17 @@
         font-size: 16px;
         font-weight: bolder;
       }
-      .nutrition{
-        display: flex;
-        gap: 100px;
-        padding-bottom: 10px;
-      }
 
-      .nutrition1{
-        display: flex;
-        gap: 70px;
-        padding-bottom: 10px;
-      }
 
       .doc{
         display: flex;
-        gap: 100px;
+        gap: 30px;
         padding-bottom: 5px;
       }
 
       .lab{
         display: flex;
-        gap: 100px;
+        gap: 70px;
       }
 
       .lab input{
@@ -125,6 +120,7 @@
         margin: 10px;
         padding: 5px;
         border-radius: 5px;
+        margin-top: 20px;
       }
   </style>
 </head>
@@ -156,10 +152,13 @@
     <div class="col-sm-3 sidenav hidden-xs">
       <h2>Manyatta Hospital</h2>
       <ul class="nav nav-pills nav-stacked">
-        <li class="active"><a href="#section1">Dashboard</a></li>
+        <li class="active"><a href="nana.html">Dashboard</a></li>
         <li><a href="patientreg.html">Patients Registration</a></li>
         <li><a href="staffreg.html">Staff Registration</a></li>
-        <li><a href="#section3">Vitals</a></li>
+        <li><a href="vitals.html">Vitals</a></li>
+        <li><a href="plist.html">Patients List</a></li>
+        <li><a href="slist.html">Staff List</a></li>
+
       </ul><br>
     </div>
     <br>
@@ -237,51 +236,18 @@
                   </div>
                 </div>
       
-                <h3>Nutritionist Details</h3>
-                <div class="nutrition">
-                  <div>
-                    <label for="kg">KiloGrams</label>
-                    <input type="number" id="kg">
-                  </div>
-      
-                  <div>
-                    <label for="height">Height(cm)</label>
-                    <input type="number" id="height">
-                  </div>
-      
-                  <div>
-                    <label for="temp">Temperature</label>
-                    <input type="number" id="temp" >
-                  </div>
-                </div>
-      
-                <div class="nutrition1">
-                  <div>
-                    <label for="pressure">Blood Pressure</label>
-                    <input type="number" id="pressure" >
-                  </div>
-      
-                  <div>
-                    <label for="pulse">Pulse Rate(/min)</label>
-                    <input type="number" id="pulse">
-                  </div>
-      
-                  <div>
-                    <label for="BMI">BMI</label>
-                    <input type="number" id="bmi">
-                  </div>
-                </div>
+               
       
                 <h3>Doctor's Assessment</h3>
                 <div class="doc">
                   <div>
                     <label for="ailment">Patient Ailment/ Symptoms</label>
-                    <input type="text" id="ailment">
+                    <textarea  id="ailment"></textarea>
                   </div>
       
                   <div>
                     <label for="priscription">Prescription</label>
-                    <input type="text" id="prescription" >
+                    <textarea  id="prescription"></textarea>
                   </div>
       
                  
@@ -291,15 +257,13 @@
                 <div class="lab">
                   <div>
                     <label for="test">Testing For</label>
-                    <input type="text" id="test" >
+                    <textarea  id="test"></textarea>
                   </div>
       
                   <div>
                     <label for="results">Results</label>
-                    <input type="text" id="results">
+                    <textarea  id="results"></textarea>
                   </div>
-      
-                  
                 </div>
       
                 
@@ -315,12 +279,12 @@
               
             </div>
           </section>
-    </body>
     </div>
   </div>
 </div>
+</body>
 
-<!--<script type="module">
+<script type="module">
     // Import the functions you need from the SDKs you need
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.0/firebase-app.js";
   
@@ -328,6 +292,7 @@
     const firebaseConfig = {
       apiKey: "AIzaSyBw-LBdjMgvxWFQScTqSEEMcHXNmdQh91g",
       authDomain: "hospital-system-b6a60.firebaseapp.com",
+      databaseURL: "https://hospital-system-b6a60-default-rtdb.firebaseio.com",
       projectId: "hospital-system-b6a60",
       storageBucket: "hospital-system-b6a60.appspot.com",
       messagingSenderId: "626119506670",
@@ -360,12 +325,6 @@
     var Telephone = document.getElementById("telephone");
     var Status = document.getElementById("status");
     var regNo = document.getElementById("RegNo");
-    var Kg = document.getElementById("kg");
-    var Height = document.getElementById("height");
-    var Temp = document.getElementById("temp");
-    var Pressure = document.getElementById("pressure");
-    var Pulse = document.getElementById("pulse");
-    var BMI = document.getElementById("bmi");
     var Ailment = document.getElementById("ailment");
     var Prescription = document.getElementById("prescription");
     var Test = document.getElementById("test");
@@ -388,12 +347,6 @@
       Telephone.value = "";
       Status.selectedIndex = 0; // Reset to first option
       regNo.value = "";
-      Kg.value = "";
-      Height.value = "";
-      Temp.value = "";
-      Pressure.value = "";
-      Pulse.value = "";
-      BMI.value = "";
       Ailment.value = "";
       Prescription.value = "";
       Test.value = "";
@@ -414,12 +367,6 @@
         Telephone: Telephone.value,
         Status: Status.value,
         Rno: regNo.value,
-        Kg: Kg.value,
-        Height: Height.value,
-        Temp: Temp.value,
-        Pressure: Pressure.value,
-        Pulse: Pulse.value,
-        BMI: BMI.value,
         Ailment: Ailment.value,
         Prescription: Prescription.value,
         Test: Test.value,
@@ -431,9 +378,10 @@
         .catch((error) => {
           alert("unsuccessful, error" + error);
         });
+        clearInputs;
     }
   
-    //SELECT DATA FUNCTION
+    //SELECT DATA FUNCTION FETCH
     function SelectData() {
       const dbref = ref(db);
   
@@ -450,12 +398,6 @@
             Telephone.value = snapshot.val().Telephone;
             Status.value = snapshot.val().Status;
             regNo.value = snapshot.val().Rno;
-            Kg.value = snapshot.val().Kg;
-            Height.value = snapshot.val().Height;
-            Temp.value = snapshot.val().Temp;
-            Pressure.value = snapshot.val().Pressure;
-            Pulse.value = snapshot.val().Pulse;
-            BMI.value = snapshot.val().BMI;
             Ailment.value = snapshot.val().Ailment;
             Prescription.value = snapshot.val().Prescription;
             Test.value = snapshot.val().Test;
@@ -482,12 +424,6 @@
         Telephone: Telephone.value,
         Status: Status.value,
         Rno: regNo.value,
-        Kg: Kg.value,
-        Height: Height.value,
-        Temp: Temp.value,
-        Pressure: Pressure.value,
-        Pulse: Pulse.value,
-        BMI: BMI.value,
         Ailment: Ailment.value,
         Prescription: Prescription.value,
         Test: Test.value,
@@ -500,6 +436,7 @@
         .catch((error) => {
           alert("unsuccessful, error" + error);
         });
+        clearInputs;
     }
   
     //DELETE DATA FUNCTION
@@ -518,7 +455,8 @@
     Update.addEventListener("click", UpdateData);
     Fetch.addEventListener("click", SelectData);
     Delete.addEventListener("click", DeleteData);
-  </script>-->
+
+  </script>
   
 </body>
 </html>

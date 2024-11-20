@@ -212,6 +212,7 @@
                     const patient = patients[regNo];
                     const newRow = tableBody.insertRow();
     
+                    newRow.insertCell(9).innerText = patient.Rno;
                     newRow.insertCell(0).innerText = patient.NameOfPat;
                     newRow.insertCell(1).innerText = patient.middleNamePat;
                     newRow.insertCell(2).innerText = patient.surNamePat;
@@ -221,7 +222,6 @@
                     newRow.insertCell(6).innerText = patient.Email;
                     newRow.insertCell(7).innerText = patient.Telephone;
                     newRow.insertCell(8).innerText = patient.Status;
-                    newRow.insertCell(9).innerText = patient.Rno;
                 }
             } else {
                 console.log("No data available");

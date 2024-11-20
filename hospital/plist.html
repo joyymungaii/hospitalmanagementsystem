@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Read Patients</title>
+    <!-- Include Bootstrap CSS for table styling (optional) -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Open Sans", sans-serif;
+        }
+        .row.content {
+            height: 550px;
+        }
+        .sidenav {
+            background-color: #f1f1f1;
+            height: 100%;
+            margin-top: 20px;
+        }
+        @media screen and (max-width: 767px) {
+            .row.content {
+                height: auto;
+            }
+        }
+        .container-fluid {
+            width: 100%;
+        }
+        .sidenav {
+            width: 20%;
+            margin-left: 10px;
+        }
+        .list {
+            width: 80%;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-inverse visible-xs">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Logo</a>
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="#">Dashboard</a></li>
+                    <li><a href="#">Age</a></li>
+                    <li><a href="#">Gender</a></li>
+                    <li><a href="#">Geo</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-fluid">
+        <div class="row content">
+            <div class="col-sm-3 sidenav hidden-xs">
+                <h2>Manyatta Hospital</h2>
+                <ul class="nav nav-pills nav-stacked">
+                    <li class="active"><a href="nana.html">Dashboard</a></li>
+                    <li><a href="patientreg.html">Patients Registration</a></li>
+                    <li><a href="staffreg.html">Staff Registration</a></li>
+                    <li><a href="vitals.html">Vitals</a></li>
+                    <li><a href="plist.html">Patients List</a></li>
+                    <li><a href="slist.html">Staff List</a></li>
+
+                </ul><br />
+            </div>
+            <br />
+
+            <div class="col-sm-9">
+                <div class="list">
+                    <div class="container">
+                        <h3>Registered Patients</h3>
+                        <table class="table table-bordered" id="patientTable">
+                            <thead>
+                                <tr>
+                                    <th>Reg No</th>
+                                    <th>First Name</th>
+                                    <th>Middle Name</th>
+                                    <th>Surname</th>
+                                    <th>DOB</th>
+                                    <th>Gender</th>
+                                    <th>County</th>
+                                    <th>Email</th>
+                                    <th>Telephone</th>
+                                    <th>Marital Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- Patient data will be appended here -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.0/firebase-app.js";
+        import { getDatabase, ref, onValue, get, child } from "https://www.gstatic.com/firebasejs/10.13.0/firebase-database.js";
+
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyBw-LBdjMgvxWFQScTqSEEMcHXNmdQh91g",
+            authDomain: "hospital-system-b6a60.firebaseapp.com",
+            projectId: "hospital-system-b6a60",
+            storageBucket: "hospital-system-b6a60.appspot.com",
+            messagingSenderId: "626119506670",
+            appId: "1:626119506670:web:22d462a6686f1de6e491ff",
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const db = getDatabase(app);
+
+        function loadPatientData() {
+            const patientRef = ref(db, "ThePatients");
+            get(patientRef)
+                .then((snapshot) => {
+                    if (snapshot.exists()) {
+                        const patients = snapshot.val();
+                        const tableBody = document
+                            .getElementById("patientTable")
+                            .getElementsByTagName("tbody")[0];
+
+                        // Clear existing rows
+                        tableBody.innerHTML = "";
+
+                        // Loop through each patient and create a table row
+                        for (const regNo in patients) {
+                            const patient = patients[regNo];
+                            const newRow = tableBody.insertRow();
+
+                            newRow.insertCell(0).innerText = patient.Rno;
+                            newRow.insertCell(1).innerText = patient.NameOfPat;
+                            newRow.insertCell(2).innerText = patient.middleNamePat;
+                            newRow.insertCell(3).innerText = patient.surNamePat;
+                            newRow.insertCell(4).innerText = patient.DOB;
+                            newRow.insertCell(5).innerText = patient.Gender;
+                            newRow.insertCell(6).innerText = patient.County;
+                            newRow.insertCell(7).innerText = patient.Email;
+                            newRow.insertCell(8).innerText = patient.Telephone;
+                            newRow.insertCell(9).innerText = patient.Status;
+                        }
+                    } else {
+                        console.log("No data available");
+                    }
+                })
+                .catch((error) => {
+                    console.error("Error fetching data: ", error);
+                });
+        }
+
+        // Load patient data when the page is loaded
+        window.onload = loadPatientData;
+    </script>
+</body>
+</html>
