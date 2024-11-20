@@ -357,30 +357,30 @@
   
     //INSERT DATA FUNCTION
     function InsertData() {
-      set(ref(db, "ThePatients/" + regNo.value), {
-        NameOfPat: firstName.value,
-        middleNamePat: middleName.value,
-        surNamePat: surName.value,
-        DOB: dateBox.value,
-        Gender: Gender.value,
-        County: County.value,
-        Email: Email.value,
-        Telephone: Telephone.value,
-        Status: Status.value,
-        Rno: regNo.value,
-        Ailment: Ailment.value,
-        Prescription: Prescription.value,
-        Test: Test.value,
-        Results: Results.value,
-      })
-        .then(() => {
-          alert("data saved successfully");
-        })
-        .catch((error) => {
-          alert("unsuccessful, error" + error);
-        });
-        clearInputs;
-    }
+  set(ref(db, "ThePatients/" + regNo.value), {
+    NameOfPat: firstName.value,
+    middleNamePat: middleName.value,
+    surNamePat: surName.value,
+    DOB: dateBox.value,
+    Gender: Gender.value,
+    County: County.value,
+    Email: Email.value,
+    Telephone: Telephone.value,
+    Status: Status.value,
+    Rno: regNo.value,
+    Ailment: Ailment.value,
+    Prescription: Prescription.value,
+    Test: Test.value,
+    Results: Results.value,
+  })
+    .then(() => {
+      alert("Data saved successfully");
+      clearInputs(); // Call clearInputs here
+    })
+    .catch((error) => {
+      alert("Unsuccessful, error: " + error);
+    });
+}
   
     //SELECT DATA FUNCTION FETCH
     function SelectData() {
@@ -442,15 +442,15 @@
   
     //DELETE DATA FUNCTION
     function DeleteData() {
-      remove(ref(db, "ThePatients/" + regNo.value))
-        .then(() => {
-          alert("data deleted successfully");
-        })
-        .catch((error) => {
-          alert("unsuccessful, error" + error);
-        });
-    }
-  
+    remove(ref(db, "ThePatients/" + regNo.value))
+    .then(() => {
+      alert("Data deleted successfully");
+      clearInputs(); // Call clearInputs to clear the input fields
+    })
+    .catch((error) => {
+      alert("Unsuccessful, error: " + error);
+    });
+}
     // Assign Events to Buttons
     Save.addEventListener("click", InsertData);
     Update.addEventListener("click", UpdateData);

@@ -892,6 +892,7 @@
 
       function InsertData() {
         set(ref(db, "Appointments/" + RegNo.value), {
+          RegNo: RegNo.value,
           Name: Name.value,
           Email: Email.value,
           DOB: dateBox.value,

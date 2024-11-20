@@ -223,23 +223,23 @@
 
   //INSERT DATA FUNCTION
   function InsertData() {
-    set(ref(db, "TheStaff/" + Rno.value), {
-      NameOfStaff: firstName.value,
-      MiddleNameStaff: middleName.value,
-      SurNameStaff: surName.value,
-      Specialty: Specialty.value,
-      Password: Password.value,
-      Email: Email.value,
-      Rno: Rno.value,
-     
+  set(ref(db, "TheStaff/" + Rno.value), {
+    NameOfStaff: firstName.value,
+    MiddleNameStaff: middleName.value,
+    SurNameStaff: surName.value,
+    Specialty: Specialty.value,
+    Password: Password.value,
+    Email: Email.value,
+    Rno: Rno.value,
+  })
+    .then(() => {
+      alert("Data saved successfully");
+      clearInputs(); // Call clearInputs to clear the input fields
     })
-      .then(() => {
-        alert("data saved successfully");
-      })
-      .catch((error) => {
-        alert("unsuccessful, error" + error);
-      });
-  }
+    .catch((error) => {
+      alert("Unsuccessful, error: " + error);
+    });
+}
 
      //FETCH DATA FUNCTION
      function SelectData() {
@@ -267,33 +267,35 @@
 
     //UPDATE DATA FUNCTION
     function UpdateData() {
-    update(ref(db, "TheStaff/" + Rno.value), {
-      NameOfStaff: firstName.value,
-      MiddleNameStaff: middleName.value,
-      SurNameStaff: surName.value,
-      Specialty: Specialty.value,
-      Password: Password.value,
-      Email: Email.value,
-      Rno: Rno.value,
+  update(ref(db, "TheStaff/" + Rno.value), {
+    NameOfStaff: firstName.value,
+    MiddleNameStaff: middleName.value,
+    SurNameStaff: surName.value,
+    Specialty: Specialty.value,
+    Password: Password.value,
+    Email: Email.value,
+    Rno: Rno.value,
+  })
+    .then(() => {
+      alert("Data updated successfully");
+      clearInputs(); // Call clearInputs to clear the input fields
     })
-      .then(() => {
-        alert("data updated successfully");
-      })
-      .catch((error) => {
-        alert("unsuccessful, error" + error);
-      });
-  }
+    .catch((error) => {
+      alert("Unsuccessful, error: " + error);
+    });
+}
 
   //DELETE DATA FUNCTION
   function DeleteData() {
-    remove(ref(db, "TheStaff/" + Rno.value))
-      .then(() => {
-        alert("data deleted successfully");
-      })
-      .catch((error) => {
-        alert("unsuccessful, error" + error);
-      });
-  }
+  remove(ref(db, "TheStaff/" + Rno.value))
+    .then(() => {
+      alert("Data deleted successfully");
+      clearInputs(); // Call clearInputs to clear the input fields
+    })
+    .catch((error) => {
+      alert("Unsuccessful, error: " + error);
+    });
+}
 
   //BUTTONS
   Save.addEventListener('click', InsertData);
