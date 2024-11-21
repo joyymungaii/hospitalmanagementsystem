@@ -127,7 +127,7 @@
         const db = getDatabase(app);
 
         function loadPatientData() {
-            const patientRef = ref(db, "ThePatients");
+            const patientRef = ref(db, "ThePatient");
             get(patientRef)
                 .then((snapshot) => {
                     if (snapshot.exists()) {

@@ -13,10 +13,14 @@
     
     /* Set gray background color and 100% height */
     .sidenav {
-      background-color: #f1f1f1;
+      background-color: #f1f1f1;            
       height: 100%;
       margin-top: 20px;
     }
+    .sidenav {
+        width: 20%;
+        margin-left: 10px;
+      }
         
     /* On small screens, set height to 'auto' for the grid */
     @media screen and (max-width: 767px) {
@@ -352,7 +356,7 @@
   
     //INSERT DATA FUNCTION
     function InsertData() {
-  set(ref(db, "ThePatients/" + regNo.value), {
+  set(ref(db, "ThePatient/" + regNo.value), {
     NameOfPat: firstName.value,
     middleNamePat: middleName.value,
     surNamePat: surName.value,
@@ -381,7 +385,7 @@
     function SelectData() {
       const dbref = ref(db);
   
-      get(child(dbref, "ThePatients/" + regNo.value))
+      get(child(dbref, "ThePatient/" + regNo.value))
         .then((snapshot) => {
           if (snapshot.exists()) {
             firstName.value = snapshot.val().NameOfPat;
@@ -409,7 +413,7 @@
   
     //UPDATE DATA FUNCTION
     function UpdateData() {
-      update(ref(db, "ThePatients/" + regNo.value), {
+      update(ref(db, "ThePatient/" + regNo.value), {
         NameOfPat: firstName.value,
         middleNamePat: middleName.value,
         surNamePat: surName.value,
@@ -437,7 +441,7 @@
   
     //DELETE DATA FUNCTION
     function DeleteData() {
-    remove(ref(db, "ThePatients/" + regNo.value))
+    remove(ref(db, "ThePatient/" + regNo.value))
     .then(() => {
       alert("Data deleted successfully");
       clearInputs(); // Call clearInputs to clear the input fields

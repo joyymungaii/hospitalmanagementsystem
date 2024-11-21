@@ -236,7 +236,7 @@
       .mode button {
         width: 100px;
         height: 40px;
-        background-color: #337AB7;
+        background-color: #337ab7;
         border-radius: 5px;
         border: none;
         outline: none;
@@ -719,14 +719,14 @@
               <label>Age</label>
               <input type="text" id="age" />
               <label>Phone number</label>
-              <input type="text" id="phone" />
+              <input type="text" id="phone" placeholder="eg +254...." />
               <label>Gender</label>
               <select name="" id="gender">
                 <option value="male">Male</option>
                 <option value="female">Female</option>
               </select>
               <label for="">RegNo</label>
-              <input type="number" id="RegNo" required>
+              <input type="number" id="RegNo" required />
             </div>
             <div class="mode">
               <button id="btn-confirm">Confirm</button>
@@ -836,21 +836,26 @@
       import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js";
       // Your web app's Firebase configuration
       const firebaseConfig = {
-          apiKey: "AIzaSyBw-LBdjMgvxWFQScTqSEEMcHXNmdQh91g",
-          authDomain: "hospital-system-b6a60.firebaseapp.com",
-          databaseURL: "https://hospital-system-b6a60-default-rtdb.firebaseio.com",
-          projectId: "hospital-system-b6a60",
-          storageBucket: "hospital-system-b6a60.firebasestorage.app",
-          messagingSenderId: "626119506670",
-          appId: "1:626119506670:web:d84c9dddfe2096cde491ff",
+        apiKey: "AIzaSyBw-LBdjMgvxWFQScTqSEEMcHXNmdQh91g",
+        authDomain: "hospital-system-b6a60.firebaseapp.com",
+        databaseURL:
+          "https://hospital-system-b6a60-default-rtdb.firebaseio.com",
+        projectId: "hospital-system-b6a60",
+        storageBucket: "hospital-system-b6a60.firebasestorage.app",
+        messagingSenderId: "626119506670",
+        appId: "1:626119506670:web:d84c9dddfe2096cde491ff",
       };
-    
+
       // Initialize Firebase
       const app = initializeApp(firebaseConfig);
-      import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-database.js";
-    
+      import {
+        getDatabase,
+        ref,
+        set,
+      } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-database.js";
+
       const db = getDatabase();
-    
+
       // REFERENCES
       var Name = document.getElementById("name");
       var Email = document.getElementById("email");
@@ -860,63 +865,63 @@
       var PhoneNo = document.getElementById("phone");
       var Gender = document.getElementById("gender");
       var RegNo = document.getElementById("RegNo");
-    
+
       var Save = document.getElementById("btn-confirm");
-    
+
       function clearInputs() {
-          Name.value = "";
-          Email.value = "";
-          dateBox.value = "";
-          Type.value = "";
-          Age.value = "";
-          PhoneNo.value = "";
-          Gender.selectedIndex = 0; // Reset to first option
-          RegNo.value = "";
+        Name.value = "";
+        Email.value = "";
+        dateBox.value = "";
+        Type.value = "";
+        Age.value = "";
+        PhoneNo.value = "";
+        Gender.selectedIndex = 0; // Reset to first option
+        RegNo.value = "";
       }
-    
+
       function InsertData() {
-          return set(ref(db, "Appointments/" + RegNo.value), {
-              RegNo: RegNo.value,
-              Name: Name.value,
-              Email: Email.value,
-              DOB: dateBox.value,
-              Type: Type.value,
-              Age: Age.value,
-              PhoneNo: PhoneNo.value,
-              Gender: Gender.value,
-          });
+        return set(ref(db, "Appointments/" + RegNo.value), {
+          RegNo: RegNo.value,
+          Name: Name.value,
+          Email: Email.value,
+          DOB: dateBox.value,
+          Type: Type.value,
+          Age: Age.value,
+          PhoneNo: PhoneNo.value,
+          Gender: Gender.value,
+        });
       }
-    
+
       function sendSMS() {
-          const options = {
-              to: [PhoneNo.value], // Use the phone number from the input
-              message: "Your appointment has been confirmed."
-          };
-    
-          // Send POST request to the server
-          return fetch('http://localhost:3000/send-sms', {
-              method: 'POST',
-              headers: {
-                  'Content-Type': 'application/json'
-              },
-              body: JSON.stringify(options)
-          });
+        const options = {
+          to: [ PhoneNo.value], // Use the phone number from the input
+          message: "Your appointment has been confirmed.",
+        };
+
+        // Send POST request to the server
+        return fetch("http://localhost:3000/send-sms", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(options),
+        });
       }
-    
-      Save.addEventListener("click", async function() {
-          try {
-              await InsertData();
-              alert("Data saved successfully");
-    
-              const response = await sendSMS();
-              const data = await response.json();
-              console.log(data);
-              alert("SMS sent successfully!"); // Show success message
-          } catch (error) {
-              alert("An error occurred: " + error.message);
-          } finally {
-              clearInputs(); // Clear inputs after operations
-          }
+
+      Save.addEventListener("click", async function () {
+        try {
+          await InsertData();
+          alert("Data saved successfully");
+
+          const response = await sendSMS();
+          const data = await response.json();
+          console.log(data);
+          alert("SMS sent successfully!"); // Show success message
+        } catch (error) {
+          alert("An error occurred: " + error.message);
+        } finally {
+          clearInputs(); // Clear inputs after operations
+        }
       });
     </script>
   </body>
