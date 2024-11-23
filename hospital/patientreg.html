@@ -28,7 +28,7 @@
     }
 
     .banner {
-        height: 100vh;
+        height: 130vh;
         background-color: #f1f1f1;
         padding-top: 10px;
         padding-left: 15px;
@@ -84,6 +84,18 @@
         display: flex;
         gap: 20px;
 
+      }
+
+      .nutrition {
+        display: flex;
+        gap: 100px;
+        padding-bottom: 10px;
+      }
+
+      .nutrition1 {
+        display: flex;
+        gap: 70px;
+        padding-bottom: 10px;
       }
 
       .dob{
@@ -163,7 +175,6 @@
         <li><a href="appointments.html">Appointments</a></li>
         <li><a href="patientreg.html">Patients Registration</a></li>
         <li><a href="staffreg.html">Staff Registration</a></li>
-        <li><a href="vitals.html">Vitals</a></li>
         <li><a href="plist.html">Patients List</a></li>
         <li><a href="slist.html">Staff List</a></li>
 
@@ -241,6 +252,40 @@
                   <div>
                     <label for="">RegNo</label>
                     <input type="number" id="RegNo" required>
+                  </div>
+                </div>
+                <h3>Vitals Details</h3>
+                <div class="nutrition">
+                  <div>
+                    <label for="kg">KiloGrams</label>
+                    <input type="number" id="kg" />
+                  </div>
+  
+                  <div>
+                    <label for="height">Height(cm)</label>
+                    <input type="number" id="height" />
+                  </div>
+  
+                  <div>
+                    <label for="temp">Temperature</label>
+                    <input type="number" id="temp" />
+                  </div>
+                </div>
+  
+                <div class="nutrition1">
+                  <div>
+                    <label for="pressure">Blood Pressure</label>
+                    <input type="number" id="pressure" />
+                  </div>
+  
+                  <div>
+                    <label for="pulse">Pulse Rate(/min)</label>
+                    <input type="number" id="pulse" />
+                  </div>
+  
+                  <div>
+                    <label for="BMI">BMI</label>
+                    <input type="number" id="bmi" />
                   </div>
                 </div>
       
@@ -325,6 +370,12 @@
     var Telephone = document.getElementById("telephone");
     var Status = document.getElementById("status");
     var regNo = document.getElementById("RegNo");
+    var Kg = document.getElementById("kg");
+    var Height = document.getElementById("height");
+    var Temp = document.getElementById("temp");
+    var Pressure = document.getElementById("pressure");
+    var Pulse = document.getElementById("pulse");
+    var BMI = document.getElementById("bmi");
     var Ailment = document.getElementById("ailment");
     var Prescription = document.getElementById("prescription");
     var Test = document.getElementById("test");
@@ -347,6 +398,12 @@
       Telephone.value = "";
       Status.selectedIndex = 0; // Reset to first option
       regNo.value = "";
+      Kg.value = "";
+      Height.value = "";
+      Temp.value = "";
+      Pressure.value = "";
+      Pulse.value = "";
+      BMI.value = "";
       Ailment.value = "";
       Prescription.value = "";
       Test.value = "";
@@ -367,6 +424,12 @@
     Telephone: Telephone.value,
     Status: Status.value,
     Rno: regNo.value,
+    Kg: Kg.value,
+    Height: Height.value,
+    Temp: Temp.value,
+    Pressure: Pressure.value,
+    Pulse: Pulse.value,
+    BMI: BMI.value,
     Ailment: Ailment.value,
     Prescription: Prescription.value,
     Test: Test.value,
@@ -398,6 +461,12 @@
             Telephone.value = snapshot.val().Telephone;
             Status.value = snapshot.val().Status;
             regNo.value = snapshot.val().Rno;
+            Kg.value = snapshot.val().Kg;
+            Height.value = snapshot.val().Height;
+            Temp.value = snapshot.val().Temp;
+            Pressure.value = snapshot.val().Pressure;
+            Pulse.value = snapshot.val().Pulse;
+            BMI.value = snapshot.val().BMI;
             Ailment.value = snapshot.val().Ailment;
             Prescription.value = snapshot.val().Prescription;
             Test.value = snapshot.val().Test;
@@ -424,6 +493,12 @@
         Telephone: Telephone.value,
         Status: Status.value,
         Rno: regNo.value,
+        Kg: Kg.value,
+        Height: Height.value,
+        Temp: Temp.value,
+        Pressure: Pressure.value,
+        Pulse: Pulse.value,
+        BMI: BMI.value,
         Ailment: Ailment.value,
         Prescription: Prescription.value,
         Test: Test.value,

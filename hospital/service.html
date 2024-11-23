@@ -24,12 +24,9 @@
       }
 
       /*whole header*/
-      .navbar {
+      header {
         display: flex;
-        align-items: center;
-        gap: 200px;
         width: 100vw;
-        height: 80px;
         background-color: #027179;
       }
 
@@ -40,6 +37,7 @@
         font-size: 30px;
         font-weight: bold;
         letter-spacing: -0.08em;
+        margin-right: 330px;
       }
 
       .logo a:hover {
@@ -375,7 +373,7 @@
     <header>
       <div class="navbar">
         <div class="logo">
-          <a href="index.html">Care Embrace Medical</a>
+          <a href="index.html">Manyatta Hospital</a>
         </div>
 
         <ul class="links">
@@ -384,34 +382,6 @@
           <li><a href="contact.html">Contact</a></li>
         </ul>
 
-        <div class="dropdown">
-          <button
-            style="
-              background-color: #8bfff7b0;
-              color: #000;
-              border: none;
-              margin-right: 10px;
-            "
-            class="btn btn-secondary dropdown-toggle"
-            type="button"
-            data-bs-toggle="dropdown"
-            aria-expanded="false"
-          >
-            Get Started
-          </button>
-          <ul class="dropdown-menu">
-            <li>
-              <a class="dropdown-item" href="/hospital/signup.html">Log In</a>
-            </li>
-            <li>
-              <a class="dropdown-item" href="/hospital/signup.html">Register</a>
-            </li>
-            <li><hr class="dropdown-divider" /></li>
-            <li>
-              <button class="dropdown-item" id="logout">Log out</button>
-            </li>
-          </ul>
-        </div>
       </div>
     </header>
     <section class="one">
