@@ -24,6 +24,9 @@
         background-color: #f1f1f1;
         height: 100%;
         margin-top: 20px;
+        border: 0.5px solid #E3E3E3;
+        width: 20%;
+        margin-left: 10px;
       }
       @media screen and (max-width: 767px) {
         .row.content {
@@ -33,9 +36,49 @@
       .container-fluid {
         width: 100%;
       }
-      .sidenav {
-        width: 20%;
-        margin-left: 10px;
+
+      .col-sm-9 {
+        height: 90vh;
+        background-color: #f1f1f1;
+        padding: 15px;
+        margin-left: 20px;
+        border: 0.5px solid #E3E3E3;
+      }
+      .table-container {
+        margin: 0 auto;
+      }
+      .table {
+        width: 100%;
+        max-width: 100%;
+        margin-bottom: 1rem;
+        background-color: transparent;
+      }
+      .table th,
+      .table td {
+        padding: 0.75rem;
+        vertical-align: top;
+        border-top: 1px solid #dee2e6;
+      }
+      .table thead th {
+        vertical-align: bottom;
+        border-bottom: 2px solid #dee2e6;
+      }
+      .table tbody + tbody {
+        border-top: 2px solid #dee2e6;
+      }
+      .table-bordered {
+        border: 1px solid #dee2e6;
+      }
+      .table-bordered th,
+      .table-bordered td {
+        border: 1px solid #dee2e6;
+      }
+      .table-bordered thead th,
+      .table-bordered thead td {
+        border-bottom-width: 2px;
+      }
+      .table-hover tbody tr:hover {
+        background-color: rgba(0, 0, 0, 0.075);
       }
     </style>
   </head>
@@ -83,90 +126,96 @@
         <br />
 
         <div class="col-sm-9">
-          <div class="list">
-            <div class="container">
-              <h3>Appointments</h3>
-              <table class="table table-bordered" id="appointmentTable">
-                <thead>
-                  <tr>
-                    <th>Reg No</th>
-                    <th>Name</th>
-                    <th>Email</th>
-                    <th>DOB</th>
-                    <th>Type</th>
-                    <th>Age</th>
-                    <th>Phone Number</th>
-                    <th>Gender</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <!-- Staff data will be appended here -->
-                </tbody>
-              </table>
-            </div>
+          <div class="table-container">
+            <h3>Active Appointments</h3>
+            <table
+              class="table table-bordered table-hover"
+              id="appointmentTable"
+            >
+              <thead>
+                <tr>
+                  <th>Reg No</th>
+                  <th>Name</th>
+                  <th>Email</th>
+                  <th>DOB</th>
+                  <th>Type</th>
+                  <th>Age</th>
+                  <th>Phone Number</th>
+                  <th>Gender</th>
+                </tr>
+              </thead>
+              <tbody>
+                <!-- Appointment data will be appended here -->
+              </tbody>
+            </table>
           </div>
         </div>
       </div>
     </div>
 
     <script type="module">
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.0/firebase-app.js";
-        import { getDatabase, ref, get, child } from "https://www.gstatic.com/firebasejs/10.13.0/firebase-database.js";
-      
-        // Your web app's Firebase configuration
-        const firebaseConfig = {
-          apiKey: "AIzaSyBw-LBdjMgvxWFQScTqSEEMcHXNmdQh91g",
-          authDomain: "hospital-system-b6a60.firebaseapp.com",
-          databaseURL: "https://hospital-system-b6a60-default-rtdb.firebaseio.com",
-          projectId: "hospital-system-b6a60",
-          storageBucket: "hospital-system-b6a60.appspot.com",
-          messagingSenderId: "626119506670",
-          appId: "1:626119506670:web:367e9abfc6473860e491ff",
-        };
-      
-        // Initialize Firebase
-        const app = initializeApp(firebaseConfig);
-        const db = getDatabase(app);
-      
-        function loadAppointmentData() {
-          const appointRef = ref(db, "Appointments");
-          get(appointRef)
-            .then((snapshot) => {
-              if (snapshot.exists()) {
-                const Appointment = snapshot.val();
-                const tableBody = document
-                  .getElementById("appointmentTable")
-                  .getElementsByTagName("tbody")[0];
-      
-                // Clear existing rows
-                tableBody.innerHTML = "";
-      
-                // Loop through each appointment and create a table row
-                for (const RegNo in Appointment) {
-                  const AppointList = Appointment[RegNo];
-                  const newRow = tableBody.insertRow();
-      
-                  newRow.insertCell(0).innerText = AppointList.RegNo;
-                  newRow.insertCell(1).innerText = AppointList.Name;
-                  newRow.insertCell(2).innerText = AppointList.Email;
-                  newRow.insertCell(3).innerText = AppointList.DOB;
-                  newRow.insertCell(4).innerText = AppointList.Type;
-                  newRow.insertCell(5).innerText = AppointList.Age;
-                  newRow.insertCell(6).innerText = AppointList.PhoneNo;
-                  newRow.insertCell(7).innerText = AppointList.Gender;
-                }
-              } else {
-                console.log("No data available");
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.0/firebase-app.js";
+      import {
+        getDatabase,
+        ref,
+        get,
+        child,
+      } from "https://www.gstatic.com/firebasejs/10.13.0/firebase-database.js";
+
+      // Your web app's Firebase configuration
+      const firebaseConfig = {
+        apiKey: "AIzaSyBw-LBdjMgvxWFQScTqSEEMcHXNmdQh91g",
+        authDomain: "hospital-system-b6a60.firebaseapp.com",
+        databaseURL:
+          "https://hospital-system-b6a60-default-rtdb.firebaseio.com",
+        projectId: "hospital-system-b6a60",
+        storageBucket: "hospital-system-b6a60.appspot.com",
+        messagingSenderId: "626119506670",
+        appId: "1:626119506670:web:367e9abfc6473860e491ff",
+      };
+
+      // Initialize Firebase
+      const app = initializeApp(firebaseConfig);
+      const db = getDatabase(app);
+
+      function loadAppointmentData() {
+        const appointRef = ref(db, "Appointments");
+        get(appointRef)
+          .then((snapshot) => {
+            if (snapshot.exists()) {
+              const Appointment = snapshot.val();
+              const tableBody = document
+                .getElementById("appointmentTable")
+                .getElementsByTagName("tbody")[0];
+
+              // Clear existing rows
+              tableBody.innerHTML = "";
+
+              // Loop through each appointment and create a table row
+              for (const RegNo in Appointment) {
+                const AppointList = Appointment[RegNo];
+                const newRow = tableBody.insertRow();
+
+                newRow.insertCell(0).innerText = AppointList.RegNo;
+                newRow.insertCell(1).innerText = AppointList.Name;
+                newRow.insertCell(2).innerText = AppointList.Email;
+                newRow.insertCell(3).innerText = AppointList.DOB;
+                newRow.insertCell(4).innerText = AppointList.Type;
+                newRow.insertCell(5).innerText = AppointList.Age;
+                newRow.insertCell(6).innerText = AppointList.PhoneNo;
+                newRow.insertCell(7).innerText = AppointList.Gender;
               }
-            })
-            .catch((error) => {
-              console.error("Error fetching data: ", error);
-            });
-        }
-      
-        // Load appointment data when the page is loaded
-        window.onload = loadAppointmentData;
-      </script>
-      
+            } else {
+              console.log("No data available");
+            }
+          })
+          .catch((error) => {
+            console.error("Error fetching data: ", error);
+          });
+      }
+
+      // Load appointment data when the page is loaded
+      window.onload = loadAppointmentData;
+    </script>
   </body>
 </html>

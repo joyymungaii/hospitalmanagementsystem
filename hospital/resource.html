@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
+      crossorigin="anonymous"
+    />
+    <title>Resources</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      /*whole header*/
+      header {
+        display: flex;
+        width: 100%;
+        background-color: #027179;
+      }
+
+      /*logo*/
+      .logo {
+        margin-left: 20px;
+        color: #000;
+        font-size: 30px;
+        font-weight: bold;
+        letter-spacing: -0.08em;
+        margin-right: 330px;
+      }
+
+      .logo a:hover {
+        color: #000;
+      }
+
+      li {
+        list-style: none;
+      }
+
+      a {
+        text-decoration: none;
+        color: #000;
+      }
+
+      .links {
+        display: flex;
+        gap: 40px;
+        padding-top: 20px;
+        color: #000;
+      }
+
+      .links a:hover {
+        color: #000;
+        text-decoration: underline;
+      }
+      .one {
+        height: 185vh;
+        width: 100%;
+        background-color: #f1f1f1;
+      }
+      .one h4{
+        font-size: 40px;
+        text-transform: uppercase;
+        text-align: center;
+      }
+      footer {
+        height: 35vh;
+        background-color: #0b8da1;
+      }
+
+      .about_us {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+        padding-right: 50px;
+      }
+      .about_us h2 {
+        font-size: 20px;
+      }
+      .about_us p {
+        font-size: 14px;
+      }
+      .about_us i {
+        margin-right: 5px;
+        font-size: 25px;
+      }
+      .pages {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        padding-right: 20px;
+      }
+      .pages h2 {
+        font-size: 18px;
+      }
+      .pages a {
+        font-size: 14px;
+      }
+      .directions {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+      }
+      .directions span {
+        color: #93a267;
+      }
+      .directions h2 {
+        font-size: 18px;
+      }
+      .directions p {
+        font-size: 14px;
+      }
+      .directions a {
+        text-transform: uppercase;
+        font-size: 15px;
+        text-decoration: underline;
+      }
+      .directions a:hover {
+        color: #93a267;
+      }
+      .main {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 100px;
+        padding-top: 20px;
+        height: 30vh;
+      }
+      .copyright {
+        background-color: #000;
+        height: 7vh;
+        margin-top: 22px;
+        display: flex;
+        align-items: center;
+      }
+      .copyright p {
+        color: #fff;
+        padding-left: 50px;
+      }
+      .card{
+        background-color: #d13d8273;
+      }
+      .row{
+        margin-left: 5px;
+        margin-right: 5px;
+      }
+      .btn{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+      }
+      .btn button{
+        border: none;
+        width: 200px;
+        height: 40px;
+        margin-top: 20px;
+        border-radius: 15px;
+        background-color: #027179;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="navbar">
+        <div class="logo">
+          <a href="index.html">Manyatta Hospital</a>
+        </div>
+
+        <ul class="links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="service.html">Services</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="resource.html">Resources</a></li>
+        </ul>
+      </div>
+    </header>
+    <section class="one">
+      <h4>Health Tips</h4>
+      <div class="row row-cols-1 row-cols-md-3 g-4">
+        <div class="col">
+          <div class="card h-100">
+            <img src="/images/dd.webp" class="card-img-top" alt="..." />
+            <div class="card-body">
+              <h5 class="card-title">Prioritize a Balanced Diet</h5>
+              <p class="card-text">
+                Focus on whole foods like fruits, vegetables, lean proteins,
+                whole grains, and healthy fats. <br />Limit processed foods,
+                sugary drinks, and excessive amounts of saturated and unhealthy
+                fats. <br />Stay hydrated by drinking plenty of water throughout
+                the day.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card h-100">
+            <img src="/images/sl.jpeg" class="card-img-top" alt="..." />
+            <div class="card-body">
+              <h5 class="card-title">Adequate Sleep</h5>
+              <p class="card-text">
+                Aim for 7-9 hours of quality sleep each night.
+                <br />Establish a regular sleep schedule and create a calming
+                bedtime routine. <br />Limit screen time before bed and create a
+                relaxing sleep environment.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card h-100">
+            <img src="/images/exercise.jpeg" class="card-img-top" alt="..." />
+            <div class="card-body">
+              <h5 class="card-title">Regular Physical Activity</h5>
+              <p class="card-text">
+                Aim for at least 30 minutes of moderate-intensity exercise most
+                days of the week. <br />Incorporate activities you enjoy, such
+                as walking, jogging, swimming, dancing, or cycling. <br />Find
+                ways to stay active throughout the day, like taking stairs
+                instead of elevators or going for short walks.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card h-100">
+            <img src="/images/stress.jpeg" class="card-img-top" alt="..." />
+            <div class="card-body">
+              <h5 class="card-title">Manage Stress</h5>
+              <p class="card-text">
+                Practice stress-reduction techniques like meditation, yoga, deep
+                breathing, or spending time in nature.
+                <br />Prioritize activities you enjoy and make time for hobbies
+                and relaxation. <br />Connect with loved ones and seek support
+                when needed.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card h-100">
+            <img src="/images/check-up.jpeg" class="card-img-top" alt="..." />
+            <div class="card-body">
+              <h5 class="card-title">Regular Health Check-ups</h5>
+              <p class="card-text">
+                Schedule regular check-ups with your doctor for preventive care
+                and early detection of potential health issues.
+                <br />Get recommended screenings and vaccinations to maintain
+                optimal health. <br />Be proactive about your health and don't
+                hesitate to seek medical advice when needed.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card h-100">
+            <img src="/images/relationship.jpeg" class="card-img-top" alt="..." />
+            <div class="card-body">
+              <h5 class="card-title">Cultivate Positive Relationships</h5>
+              <p class="card-text">
+                Strong social connections are essential for overall well-being.
+                <br />Make time for quality interactions with friends and
+                family. <br />Positive relationships can reduce stress, boost
+                mood, and strengthen your immune system.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="btn">
+        <button>Internship Application</button>
+        <button>Donations</button>
+      </div>
+    </section>
+    <footer>
+      <div class="main">
+        <div class="about_us">
+          <h2>Manyatta Hospital</h2>
+          <p>
+            Lorem ipsum dolor sit amet consectetur <br />
+            adipisicing elit. Molestias nostrum deleniti <br />
+            sequi sit odit facilis ducimus voluptas. <br />
+            Exercitationem, blanditiis voluptates?
+          </p>
+          <div>
+            <i class="fa-brands fa-instagram"></i>
+            <i class="fa-brands fa-twitter"></i>
+            <i class="fa-brands fa-facebook-f"></i>
+          </div>
+        </div>
+        <div class="pages">
+          <h2>Other pages</h2>
+          <a href="index.html">Home</a>
+          <a href="service.html">Services</a>
+          <a href="contact.html">Contact</a>
+          <a href="resource.html">Resources</a>
+        </div>
+        <div class="directions">
+          <h2>Contact Info</h2>
+          <p>Nairobi, Kenya</p>
+          <p>Email: <span>joywanjirum4@gmail.com</span></p>
+          <p>Phone: (+254)768608469</p>
+          <a href="#">view directions</a>
+        </div>
+      </div>
+      <div class="copyright">
+        <p>© 2024 Care Embrace Medical. All rights reserved.</p>
+      </div>
+    </footer>
+  </body>
+</html>
