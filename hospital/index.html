@@ -34,7 +34,6 @@
 
       /*whole header*/
       header {
-
         width: 100vw;
         background-color: #027179;
       }
@@ -638,7 +637,9 @@
           <p>
             Lorem ipsum dolor sit amet consecte adipisicing elit Atque, odit.
           </p>
-          <a href="service.html">Learn more <i class="fa-solid fa-arrow-right"></i></a>
+          <a href="service.html"
+            >Learn more <i class="fa-solid fa-arrow-right"></i
+          ></a>
         </div>
         <div class="service">
           <i class="fa-solid fa-eye"></i>
@@ -647,7 +648,9 @@
             Lorem ipsum dolor sit amet consecte adipisicing elit. Eligendi,
             nihil.
           </p>
-          <a href="service.html">Learn more <i class="fa-solid fa-arrow-right"></i></a>
+          <a href="service.html"
+            >Learn more <i class="fa-solid fa-arrow-right"></i
+          ></a>
         </div>
         <div class="service">
           <i class="fa-solid fa-stethoscope"></i>
@@ -656,7 +659,9 @@
             Lorem ipsum dolor sit amet consecte adipisicing elit. Eligendi,
             nihil.
           </p>
-          <a href="service.html">Learn more <i class="fa-solid fa-arrow-right"></i></a>
+          <a href="service.html"
+            >Learn more <i class="fa-solid fa-arrow-right"></i
+          ></a>
         </div>
       </div>
       <div class="services">
@@ -667,7 +672,9 @@
             Lorem ipsum dolor sit amet consecte adipisicing elit. Eligendi,
             nihil.
           </p>
-          <a href="service.html">Learn more <i class="fa-solid fa-arrow-right"></i></a>
+          <a href="service.html"
+            >Learn more <i class="fa-solid fa-arrow-right"></i
+          ></a>
         </div>
         <div class="service">
           <i class="fa-solid fa-syringe"></i>
@@ -676,7 +683,9 @@
             Lorem ipsum dolor sit amet consecte adipisicing elit. Eligendi,
             nihil.
           </p>
-          <a href="service.html">Learn more <i class="fa-solid fa-arrow-right"></i></a>
+          <a href="service.html"
+            >Learn more <i class="fa-solid fa-arrow-right"></i
+          ></a>
         </div>
         <div class="service">
           <i class="fa-solid fa-baby-carriage"></i>
@@ -685,7 +694,9 @@
             Lorem ipsum dolor sit amet consecte adipisicing elit. Eligendi,
             nihil.
           </p>
-          <a href="service.html">Learn more <i class="fa-solid fa-arrow-right"></i></a>
+          <a href="service.html"
+            >Learn more <i class="fa-solid fa-arrow-right"></i
+          ></a>
         </div>
       </div>
       <div class="buttons">
@@ -890,12 +901,12 @@
 
       function sendSMS() {
         const options = {
-          to: [ PhoneNo.value], // Use the phone number from the input
+          to: [PhoneNo.value], // Use the phone number from the input
           message: "Your appointment has been confirmed.",
         };
 
         // Send POST request to the server
-        return fetch("http://localhost:3000/send-sms",{
+        return fetch("http://localhost:3000/send-sms", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
