@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <title>Appointment Booking Calendar</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Open Sans", sans-serif;
+      }
+      .row.content {
+        height: 550px;
+        display: flex;
+        margin-bottom: 5px;
+      }
+      .sidenav {
+        background-color: #f1f1f1;
+        height: 100%;
+        margin-top: 20px;
+        border: 0.5px solid #e3e3e3;
+        width: 25%;
+        margin-left: 10px;
+      }
+      @media screen and (max-width: 767px) {
+        .row.content {
+          height: auto;
+        }
+      }
+      .col-sm-9 {
+        background-color: #f1f1f1;
+        padding-left: 10px;
+        margin-left: 20px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        border: 0.5px solid #e3e3e3;
+        width: 83%;
+        margin-top: 20px;
+        height: 90vh;
+      }
+      .container-fluid {
+        width: 100%;
+      }
+
+      .container {
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 15px;
+        box-sizing: border-box;
+      }
+
+      h1 {
+        color: #2c3e50;
+        font-size: 2em;
+        margin-bottom: 20px;
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 20px;
+      }
+
+      .card {
+        background-color: #ffffff;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+      }
+
+      .card h2 {
+        color: #3498db;
+        margin-top: 0;
+        font-size: 1.5em;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 10px;
+      }
+
+      th,
+      td {
+        text-align: left;
+        padding: 8px;
+        border-bottom: 1px solid #ddd;
+      }
+
+      th {
+        background-color: #f2f2f2;
+      }
+
+
+      .normal {
+        color: green;
+      }
+
+      .abnormal {
+        color: red;
+      }
+
+      @media (max-width: 768px) {
+        .grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+    </style>
+  </head>
+  <body>
+    <nav class="navbar navbar-inverse visible-xs">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button
+            type="button"
+            class="navbar-toggle"
+            data-toggle="collapse"
+            data-target="#myNavbar"
+          >
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="p-dash.html">Manyatta Hospital</a>
+        </div>
+        <div class="collapse navbar-collapse" id="myNavbar">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="p-dash.html">Manyatta Hospital</a></li>
+            <li><a href="p-appointments.html">My Appointments</a></li>
+            <li><a href="medics.html">Medical History</a></li>
+            <li><a href="book.html">Book Appointment</a></li>
+            <li><a href="p-setting.html">Settings</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container-fluid">
+      <div class="row content">
+        <div class="col-sm-3 sidenav hidden-xs">
+          <h2>Manyatta Hospital</h2>
+          <ul class="nav nav-pills nav-stacked">
+            <li class="active"><a href="p-dash.html">Dashboard</a></li>
+            <li><a href="p-appointments.html">My Appointments</a></li>
+            <li><a href="medics.html">Medical History</a></li>
+            <li><a href="book.html">Book Appointment</a></li>
+            <li><a href="p-setting.html">Settings</a></li>
+          </ul>
+          <br />
+        </div>
+        <br />
+
+        <div class="col-sm-9">
+          <div class="container">
+            <h1>Medical Record</h1>
+            <div class="grid">
+              <div class="card" id="patient-info">
+                <h2>Patient Information</h2>
+                <p><strong>Name:</strong> <span id="patient-name"></span></p>
+                <p>
+                  <strong>Date of Birth:</strong> <span id="patient-dob"></span>
+                </p>
+                <p>
+                  <strong>Gender:</strong> <span id="patient-gender"></span>
+                </p>
+                <p>
+                  <strong>Blood Type:</strong>
+                  <span id="patient-blood-type"></span>
+                </p>
+                <p>
+                  <strong>Height:</strong> <span id="patient-height"></span>
+                </p>
+                <p>
+                  <strong>Weight:</strong> <span id="patient-weight"></span>
+                </p>
+              </div>
+              <div class="card" id="medical-history">
+                <h2>Medical History</h2>
+                <table id="history-table">
+                  <thead>
+                    <tr>
+                      <th>Date</th>
+                      <th>Condition</th>
+                      <th>Notes</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <!-- Medical history will be inserted here -->
+                  </tbody>
+                </table>
+              </div>
+              <div class="card" id="medications">
+                <h2>Current Medications</h2>
+                <table id="medication-table">
+                  <thead>
+                    <tr>
+                      <th>Medication</th>
+                      <th>Dosage</th>
+                      <th>Frequency</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <!-- Medications will be inserted here -->
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      // Sample data (in a real application, this would come from a server)
+      const patientData = {
+        name: "John Doe",
+        dob: "1980-01-15",
+        gender: "Male",
+        bloodType: "A+",
+        height: "180 cm",
+        weight: "75 kg",
+      };
+
+      const medicalHistory = [
+        {
+          date: "2022-05-15",
+          condition: "Hypertension",
+          notes: "Prescribed medication",
+        },
+        {
+          date: "2021-11-03",
+          condition: "Appendectomy",
+          notes: "Surgical procedure",
+        },
+        {
+          date: "2020-02-20",
+          condition: "Influenza",
+          notes: "Bed rest and fluids recommended",
+        },
+      ];
+
+      const medications = [
+        { name: "Lisinopril", dosage: "10mg", frequency: "Once daily" },
+        { name: "Metformin", dosage: "500mg", frequency: "Twice daily" },
+        {
+          name: "Atorvastatin",
+          dosage: "20mg",
+          frequency: "Once daily at bedtime",
+        },
+      ];
+
+      const testResults = [
+        {
+          date: "2023-06-01",
+          test: "Complete Blood Count",
+          result: "Normal",
+          notes: "All values within range",
+        },
+        {
+          date: "2023-05-15",
+          test: "Lipid Panel",
+          result: "Abnormal",
+          notes: "LDL cholesterol slightly elevated",
+        },
+        {
+          date: "2023-04-22",
+          test: "HbA1c",
+          result: "Normal",
+          notes: "Good glycemic control",
+        },
+      ];
+
+      // Populate patient information
+      document.getElementById("patient-name").textContent = patientData.name;
+      document.getElementById("patient-dob").textContent = patientData.dob;
+      document.getElementById("patient-gender").textContent =
+        patientData.gender;
+      document.getElementById("patient-blood-type").textContent =
+        patientData.bloodType;
+      document.getElementById("patient-height").textContent =
+        patientData.height;
+      document.getElementById("patient-weight").textContent =
+        patientData.weight;
+
+      // Populate medical history
+      const historyTable = document
+        .getElementById("history-table")
+        .getElementsByTagName("tbody")[0];
+      medicalHistory.forEach((item) => {
+        const row = historyTable.insertRow();
+        row.insertCell(0).textContent = item.date;
+        row.insertCell(1).textContent = item.condition;
+        row.insertCell(2).textContent = item.notes;
+      });
+
+      // Populate medications
+      const medicationTable = document
+        .getElementById("medication-table")
+        .getElementsByTagName("tbody")[0];
+      medications.forEach((med) => {
+        const row = medicationTable.insertRow();
+        row.insertCell(0).textContent = med.name;
+        row.insertCell(1).textContent = med.dosage;
+        row.insertCell(2).textContent = med.frequency;
+      });
+
+      // Populate test results
+      const resultsContainer = document.getElementById("results-container");
+      testResults.forEach((test) => {
+        const resultDiv = document.createElement("div");
+        resultDiv.className = "test-result";
+        resultDiv.innerHTML = `
+                <p><strong>${test.date} - ${test.test}</strong></p>
+                <p class="${test.result.toLowerCase()}">${test.result}</p>
+                <p>${test.notes}</p>
+            `;
+        resultsContainer.appendChild(resultDiv);
+      });
+    </script>
+  </body>
+</html>

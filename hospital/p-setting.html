@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Dashdash</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+      integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <style>
+      .row.content {
+        height: 550px;
+      }
+
+      .sidenav {
+        background-color: #f1f1f1;
+        height: 100%;
+        margin-top: 20px;
+        border: 0.5px solid #e3e3e3;
+        width: 20%;
+        margin-left: 10px;
+      }
+
+      @media screen and (max-width: 767px) {
+        .row.content {
+          height: auto;
+        }
+      }
+
+      #settings-content {
+        background-color: #f1f1f1;
+        height: 90vh;
+        border: 0.5px solid #e3e3e3;
+        padding-left: 20px;
+      }
+
+      #settings-content label {
+        font-size: 16px;
+      }
+
+      #settings-content input {
+        width: 200px;
+        height: 35px;
+        border: 0.5px solid #e3e3e3;
+        outline: none;
+      }
+
+      #settings-content button{
+        background-color: #337AB7;
+        border: none;
+        outline: none;
+        font-size: 16px;
+        border-radius: 5px;
+        height: 30px;
+        color: #fff;
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar navbar-inverse visible-xs">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button
+            type="button"
+            class="navbar-toggle"
+            data-toggle="collapse"
+            data-target="#myNavbar"
+          >
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="p-dash.html">Manyatta Hospital</a>
+        </div>
+        <div class="collapse navbar-collapse" id="myNavbar">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="p-dash.html">Manyatta Hospital</a></li>
+            <li><a href="p-appointments.html">My Appointments</a></li>
+            <li><a href="medics.html">Medical History</a></li>
+            <li><a href="book.html">Book Appointment</a></li>
+            <li><a href="p-setting.html">Settings</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container-fluid">
+      <div class="row content">
+        <div class="col-sm-3 sidenav hidden-xs">
+          <h2>Manyatta Hospital</h2>
+          <ul class="nav nav-pills nav-stacked">
+            <li class="active"><a href="p-dash.html">Dashboard</a></li>
+            <li><a href="p-appointments.html">My Appointments</a></li>
+            <li><a href="medics.html">Medical History</a></li>
+            <li><a href="book.html">Book Appointment</a></li>
+            <li><a href="p-setting.html">Settings</a></li>
+          </ul>
+          <br />
+        </div>
+        <br />
+
+        <div class="col-sm-9">
+            <div id="settings-content">
+                <h1>Settings</h1>
+                <div class="card">
+                  <h3>Account Settings</h3>
+                  <form id="settings-form">
+                    <label for="username">Username:</label>
+                    <input type="text" id="username" name="username" pattern="[A-Za-z0-9_]{3,20}" title="Username should be 3-20 characters long and can contain letters, numbers, and underscores only." required /><br /><br />
+                    
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required /><br /><br />
+                    
+                    <button type="submit" id="save">Save Changes</button>
+                  </form>
+                </div>
+              </div>
+              
+        </div>
+      </div>
+    </div>
+    <script>
+        const ALERT = document.getElementById("save")
+        ALERT.addEventListener("click", async function () {
+            alert("Changes saved")
+        });
+
+    </script>
+  </body>
+</html>
